@@ -4,15 +4,16 @@ import { ProjectDetail } from "@/components/projects/project-detail";
 import { getProjectBySlug, projects } from "@/data/projects";
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-export function generateMetadata({ params }: ProjectPageProps): Metadata {
-  const project = getProjectBySlug(params.slug);
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   if (!project) {
     return {
       title: "프로젝트를 찾을 수 없습니다",
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();

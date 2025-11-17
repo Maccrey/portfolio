@@ -11,9 +11,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   productionBrowserSourceMaps: true,
-  turbopack: {
-    root: __dirname,
-  },
 };
 
 export default nextConfig;
