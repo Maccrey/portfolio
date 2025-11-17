@@ -11,7 +11,9 @@ test.describe("환경 설정 UI", () => {
 
     await themeButton.click();
 
-    await expect.poll(async () => html.getAttribute("data-theme"), { timeout: 7000 }).not.toBe(initial);
+    await expect
+      .poll(async () => html.getAttribute("data-theme"), { timeout: 7000 })
+      .not.toBe(initial);
   });
 
   test("로케일 스위처로 영어 Hero 카피가 보인다", async ({ page }) => {

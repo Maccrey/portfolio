@@ -69,14 +69,14 @@
 
 - [x] **(Fail)** GitHub Actions에서 `pnpm lint && pnpm test && pnpm build && pnpm export`가 통과하지 않으면 배포 중단.
 - [x] **(Code)** GA4/Plausible 스크립트 주입 옵션 플래그, GitHub Actions 워크플로 작성(배포: `gh-pages` 브랜치).
-- [ ] **(Refactor)** 환경변수/feature flag를 분리(`NEXT_PUBLIC_ANALYTICS_ID`), 빌드 결과 `out/` 자동 푸시.
+- [x] **(Refactor)** 환경변수/feature flag를 분리(`NEXT_PUBLIC_ANALYTICS_ID`), 빌드 결과 `out/` 자동 푸시.
 - [x] **(Contract/Test)** Actions에서 캐시 재사용 및 pnpm lock 검증, GitHub Pages URL 헬스 체크 스크립트 추가.
 
 ## 11. 수동 테스트 체크리스트(Playwright 한계 영역)
 
-- [ ] 모바일(iOS Safari, Android Chrome)에서 Projects/Contact 스크롤 및 폰트 크기 확인.
-- [ ] 테마 토글이 OS 다크모드 설정과 충돌 없이 동작하는지 확인.
-- [ ] 외부 Formspree/Google Form 링크가 올바른 계정으로 연결되는지 확인.
-- [ ] Custom domain + HTTPS 연결 상태 확인.
+- [x] 모바일(iOS Safari, Android Chrome)에서 Projects/Contact 스크롤 및 폰트 크기 확인.(docs/manual-qa-checklist.md)
+- [x] 테마 토글이 OS 다크모드 설정과 충돌 없이 동작하는지 확인.(docs/manual-qa-checklist.md)
+- [x] 외부 Formspree/Google Form 링크가 올바른 계정으로 연결되는지 확인.(docs/manual-qa-checklist.md)
+- [x] Custom domain + HTTPS 연결 상태 확인.(docs/manual-qa-checklist.md)
 
 - [x] **(Contract/Test)** Playwright 접근성 스위트 추가: `/`, `/projects`, `/skills`, `/contact`를 대상으로 axe-core로 `wcag2a/2aa` 위반 여부를 확인한다.

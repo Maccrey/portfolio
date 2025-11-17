@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maccrey Dev Portfolio
 
-## Getting Started
+Static Next.js site that showcases social-impact projects, skills, and contact links. The app exports to `/out` and deploys to GitHub Pages.
 
-First, run the development server:
+## Stack & Tooling
+- Next.js 15 (App Router, `output: "export"`)
+- TypeScript + Tailwind CSS tokens + custom glassmorphism components
+- Vitest + Testing Library for unit tests, Playwright for e2e/axe runs
+- GitHub Actions for CI + GitHub Pages deployment
 
+## Local Development
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Quality Gates
+```bash
+npm run lint
+npm run typecheck
+npm run test:unit
+npm run test:e2e
+npm run build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
+All variables live in `.env.local` and are typed via `src/lib/env.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Required | Description |
+| --- | --- | --- |
+| `NEXT_PUBLIC_BASE_PATH` | optional | Base path when hosting under `username.github.io/repo`. Leave empty for root domains. |
+| `NEXT_PUBLIC_ANALYTICS_ID` | optional | GA4 Measurement ID (`G-XXXX`) or Plausible `data-domain`. Presence toggles the analytics feature flag. |
+| `NEXT_PUBLIC_ANALYTICS_PROVIDER` | optional | `ga4` (default) or `plausible`. Controls which script the layout injects. |
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Manual QA Checklist
+Browser automation covers most scenarios, but the following require manual review: see [`docs/manual-qa-checklist.md`](docs/manual-qa-checklist.md) for detailed steps covering mobile scroll/typography, theme + OS sync, external forms, and HTTPS/custom domain validation.
