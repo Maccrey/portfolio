@@ -70,7 +70,7 @@
 - [x] **(Fail)** GitHub Actions에서 `pnpm lint && pnpm test && pnpm build && pnpm export`가 통과하지 않으면 배포 중단.
 - [x] **(Code)** GA4/Plausible 스크립트 주입 옵션 플래그, GitHub Actions 워크플로 작성(배포: `gh-pages` 브랜치).
 - [ ] **(Refactor)** 환경변수/feature flag를 분리(`NEXT_PUBLIC_ANALYTICS_ID`), 빌드 결과 `out/` 자동 푸시.
-- [ ] **(Contract/Test)** Actions에서 캐시 재사용 및 pnpm lock 검증, GitHub Pages URL 헬스 체크 스크립트 추가.
+- [x] **(Contract/Test)** Actions에서 캐시 재사용 및 pnpm lock 검증, GitHub Pages URL 헬스 체크 스크립트 추가.
 
 ## 11. 수동 테스트 체크리스트(Playwright 한계 영역)
 
