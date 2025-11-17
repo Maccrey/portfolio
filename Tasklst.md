@@ -28,7 +28,7 @@
 - [x] **(Fail)** Home에 대표 프로젝트 카드가 최소 1개 표시되는지 Playwright 테스트 작성.
 - [x] **(Code)** Hero 메시지(“현재 존재하지 않는 것을 만드는 개발자 Maccrey”), 대표 3개 프로젝트 카드, CTA 버튼(Projects로 이동) 구현.
 - [x] **(Refactor)** 프로젝트 카드를 재사용 가능한 컴포넌트로 추출, 애니메이션/스크롤 모션 적용.
-- [ ] **(Contract/Test)** Hero 텍스트, CTA, 프로젝트 카드 타이틀 랜더 테스트(React Testing Library).
+- [x] **(Contract/Test)** Hero 텍스트, CTA, 프로젝트 카드 타이틀 랜더 테스트(React Testing Library).
 
 ## 5. Projects 리스트 & 상세
 
@@ -42,7 +42,7 @@
 - [x] **(Fail)** 카테고리(learning/strong/usable) 각각이 렌더되지 않으면 Playwright 테스트 실패.
 - [x] **(Code)** `SkillsPage`에 카테고리별 섹션 및 아이콘/뱃지 UI 구성, 성장 방향(현재 배우는 n8n) 강조.
 - [x] **(Refactor)** Skill 데이터에서 카테고리별 색상/아이콘 매핑을 util로 분리.
-- [ ] **(Contract/Test)** React Testing Library로 특정 카테고리 텍스트가 존재하는지 검증.
+- [x] **(Contract/Test)** React Testing Library로 특정 카테고리 텍스트가 존재하는지 검증.
 
 ## 7. Contact & 외부 폼 연계
 
@@ -56,7 +56,7 @@
 - [x] **(Fail)** 선택한 언어에 맞는 문자열이 렌더되지 않으면 테스트 실패하도록 e2e 테스트 작성.
 - [x] **(Code)** `next-intl` 혹은 커스텀 i18n 래퍼 도입, `locales/ko|en|ja|zh.json` 작성, `useLocale` 훅 구현.
 - [x] **(Refactor)** 페이지별 copy를 JSON에서 불러오는 구조로 통합, fallback 언어 처리.
-- [ ] **(Contract/Test)** Jest 스냅샷으로 locale JSON 키 일치 여부 검사.
+- [x] **(Contract/Test)** Jest 스냅샷으로 locale JSON 키 일치 여부 검사.
 
 ## 9. 접근성·반응형·테마 품질
 
