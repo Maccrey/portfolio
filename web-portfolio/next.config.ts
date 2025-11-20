@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
-const repoBase = process.env.NEXT_PUBLIC_BASE_PATH;
+const repoFromGithub =
+  process.env.GITHUB_ACTIONS && process.env.GITHUB_REPOSITORY
+    ? process.env.GITHUB_REPOSITORY.split("/")[1]
+    : undefined;
+
+const repoBase = process.env.NEXT_PUBLIC_BASE_PATH || repoFromGithub;
 const basePath = repoBase ? `/${repoBase}` : undefined;
 
 const nextConfig: NextConfig = {
