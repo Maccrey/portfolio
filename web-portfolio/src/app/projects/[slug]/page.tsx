@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetail } from "@/components/projects/project-detail";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug, getProjectCopy, projects } from "@/data/projects";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -19,9 +19,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: "프로젝트를 찾을 수 없습니다",
     };
   }
+  const copy = getProjectCopy(project, "ko");
   return {
-    title: `${project.name} | Maccrey Portfolio`,
-    description: project.summary,
+    title: `${copy.name} | Maccrey Portfolio`,
+    description: copy.summary,
   };
 }
 

@@ -1,23 +1,33 @@
+"use client";
+
 import type { Project } from "@/data/projects";
+import { getProjectCopy } from "@/data/projects";
+import { useLocale } from "@/providers/locale-provider";
 
 export function ProjectDetail({ project }: { project: Project }) {
+  const { locale, dictionary } = useLocale();
+  const copy = getProjectCopy(project, locale);
+
   return (
     <article className="glass-panel rounded-3xl px-8 py-8 text-white">
       <div className="mb-6 space-y-2">
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-200/80">
           {project.timeline}
         </p>
-        <h1 className="text-4xl font-semibold">{project.name}</h1>
-        <p className="text-white/70">{project.summary}</p>
+        <h1 className="text-4xl font-semibold">{copy.name}</h1>
+        <p className="text-white/70">{copy.summary}</p>
       </div>
       <div className="grid gap-8 md:grid-cols-2">
-        <DetailSection label="문제 정의" value={project.problem} />
-        <DetailSection label="대상 사용자" value={project.audience} />
-        <DetailSection label="기여도" value={project.contribution} />
-        <DetailSection label="임팩트" value={project.impact} />
+        <DetailSection label={dictionary.projectDetail.labels.problem} value={copy.problem} />
+        <DetailSection label={dictionary.projectDetail.labels.audience} value={copy.audience} />
+        <DetailSection
+          label={dictionary.projectDetail.labels.contribution}
+          value={copy.contribution}
+        />
+        <DetailSection label={dictionary.projectDetail.labels.impact} value={copy.impact} />
       </div>
       <div className="mt-8">
-        <h2 className="text-lg font-semibold">기술 스택</h2>
+        <h2 className="text-lg font-semibold">{dictionary.projectDetail.stack}</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <span key={tech} className="rounded-full bg-white/10 px-3 py-1 text-sm">
@@ -27,9 +37,9 @@ export function ProjectDetail({ project }: { project: Project }) {
         </div>
       </div>
       <div className="mt-8 space-y-3">
-        <h2 className="text-lg font-semibold">하이라이트</h2>
+        <h2 className="text-lg font-semibold">{dictionary.projectDetail.highlights}</h2>
         <ul className="list-disc space-y-2 pl-5 text-white/80">
-          {project.highlights.map((item) => (
+          {copy.highlights.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
