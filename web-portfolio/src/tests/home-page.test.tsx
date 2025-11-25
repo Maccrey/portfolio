@@ -10,6 +10,10 @@ vi.mock("@/providers/locale-provider", () => ({
   }),
 }));
 
+vi.mock("@/components/home/blog-section", () => ({
+  BlogSection: () => <div data-testid="blog-section">Blog Section</div>,
+}));
+
 describe("HomePage", () => {
   it("renders hero copy and CTA", () => {
     render(<HomePage />);

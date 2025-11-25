@@ -7,6 +7,10 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { Hero } from "@/components/home/hero";
 
+vi.mock("@/components/home/blog-section", () => ({
+  BlogSection: () => <div data-testid="blog-section">Blog Section</div>,
+}));
+
 const originalMatchMedia = window.matchMedia;
 
 describe("Theme & locale interactions", () => {
