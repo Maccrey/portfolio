@@ -14,11 +14,6 @@ const contactItems = [
     href: siteMeta.contact.github,
     labelKey: "github",
   },
-  {
-    key: "form",
-    href: siteMeta.contact.form,
-    labelKey: "form",
-  },
 ] as const;
 
 export function ContactLinks() {
@@ -27,7 +22,7 @@ export function ContactLinks() {
   return (
     <section className="glass-card rounded-3xl px-8 py-8 text-[var(--text-primary)]">
       <p className="mb-6 text-lg text-[var(--text-secondary)] text-center max-w-2xl mx-auto">{dictionary.contact.description}</p>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {contactItems.map((item) => (
           <a
             key={item.key}
