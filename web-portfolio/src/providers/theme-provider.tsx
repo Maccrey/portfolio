@@ -13,19 +13,15 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 const storageKey = "maccrey-theme";
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+const getInitialTheme = () => {
+  if (typeof window === "undefined") return "dark";
+  const stored = window.localStorage.getItem(storageKey) as Theme | null;
+  if (stored) return stored;
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+};
 
-  useEffect(() => {
-    setMounted(true);
-    const stored = window.localStorage.getItem(storageKey) as Theme | null;
-    if (stored) {
-      setTheme(stored);
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setTheme("light");
-    }
-  }, []);
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = document.documentElement;
