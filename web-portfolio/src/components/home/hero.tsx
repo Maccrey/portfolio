@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { featuredProjects, getProjectCopy } from "@/data/projects";
 import { useLocale } from "@/providers/locale-provider";
+import { getAssetPath } from "@/lib/utils";
 
 export function Hero() {
   const { dictionary, locale } = useLocale();
@@ -10,7 +11,7 @@ export function Hero() {
     <section className="glass mb-12 rounded-3xl px-8 py-12 text-[var(--text-primary)] relative overflow-hidden">
       <div className="absolute top-0 right-0 -z-10 opacity-50 mix-blend-overlay">
         <Image
-          src="/hero-banana.png"
+          src={getAssetPath("/hero-banana.png")}
           alt="Abstract Glass Banana"
           width={600}
           height={600}

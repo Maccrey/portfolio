@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/tistory";
+import { getAssetPath } from "@/lib/utils";
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
@@ -14,7 +15,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
     >
       <div className="relative h-48 w-full overflow-hidden">
         <Image
-          src={post.imageUrl || "/blog-fallback.png"}
+          src={post.imageUrl || getAssetPath("/blog-fallback.png")}
           alt={post.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
