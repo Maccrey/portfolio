@@ -6,6 +6,7 @@ import { navigation } from "@/data/site";
 import { useLocale } from "@/providers/locale-provider";
 import { LocaleSwitcher } from "./locale-switcher";
 import { ThemeToggle } from "./theme-toggle";
+import { MobileMenu } from "./mobile-menu";
 
 export function Header() {
   const pathname = usePathname();
@@ -37,6 +38,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <LocaleSwitcher />
           <ThemeToggle />
+          <MobileMenu />
         </div>
       </div>
     </header>
