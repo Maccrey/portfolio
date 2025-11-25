@@ -12,6 +12,7 @@ export const siteMeta = {
 export const navigation = [
   { href: "/", labelKey: "nav.home" },
   { href: "/projects", labelKey: "nav.projects" },
+  { href: "#blog", labelKey: "nav.blog" },
   { href: "/skills", labelKey: "nav.skills" },
   { href: "/contact", labelKey: "nav.contact" },
 ];

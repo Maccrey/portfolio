@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/hero";
 import { ProjectCard } from "@/components/projects/project-card";
 import { SkillSection } from "@/components/skills/skill-section";
 import { ContactLinks } from "@/components/contact/contact-links";
+import { BlogSection } from "@/components/home/blog-section";
 import { featuredProjects } from "@/data/projects";
 import { getSkillsByCategory } from "@/data/skills";
 import { useLocale } from "@/providers/locale-provider";
@@ -14,6 +15,8 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       <Hero />
+
+      <BlogSection />
 
       <section className="space-y-6">
         <div className="flex items-center justify-between">

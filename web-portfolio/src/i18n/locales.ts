@@ -13,6 +13,7 @@ export type CopyDictionary = {
   nav: {
     home: string;
     projects: string;
+    blog: string;
     skills: string;
     contact: string;
   };
@@ -77,6 +78,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     nav: {
       home: "Home",
       projects: "Projects",
+      blog: "Blog",
       skills: "Skills",
       contact: "Contact",
     },
@@ -143,6 +145,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     nav: {
       home: "Home",
       projects: "Projects",
+      blog: "Blog",
       skills: "Skills",
       contact: "Contact",
     },
@@ -209,6 +212,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     nav: {
       home: "ホーム",
       projects: "プロジェクト",
+      blog: "ブログ",
       skills: "スキル",
       contact: "連絡先",
     },
@@ -275,6 +279,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     nav: {
       home: "首頁",
       projects: "專案",
+      blog: "部落格",
       skills: "技能",
       contact: "聯絡",
     },
