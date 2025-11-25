@@ -30,8 +30,12 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
       const dateStr = dateMatch ? dateMatch[1] : new Date().toISOString();
       const description = descriptionMatch ? decodeHTMLEntities(descriptionMatch[1]) : "";
 
-      // Extract image from description
-      const imgMatch = description.match(/<img[^>]+src=["']([^"']+)["']/);
+      // Extract image from description - try multiple patterns
+      const imgMatch = 
+        description.match(/<img[^>]+src=["']([^"']+)["']/) ||
+        description.match(/src=["']([^"']+)["']/) ||
+        description.match(/<image>[\s\S]*?<url>(.*?)<\/url>/);
+        
       const imageUrl = imgMatch ? imgMatch[1] : undefined;
 
       // Create a plain text summary from description

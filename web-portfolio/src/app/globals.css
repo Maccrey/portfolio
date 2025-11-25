@@ -5,6 +5,10 @@
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   /* Light Mode Base (Default) */
   --page-bg: radial-gradient(circle at top left, #f0f9ff, #e0f2fe, #ffffff) no-repeat fixed;
