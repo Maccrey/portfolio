@@ -1,24 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import { featuredProjects, getProjectCopy } from "@/data/projects";
 import { useLocale } from "@/providers/locale-provider";
-import { getAssetPath } from "@/lib/utils";
 
 export function Hero() {
   const { dictionary, locale } = useLocale();
 
   return (
     <section className="glass mb-12 rounded-3xl px-8 py-12 text-[var(--text-primary)] relative overflow-hidden">
-      <div className="absolute top-0 right-0 -z-10 opacity-50 mix-blend-overlay">
-        <Image
-          src={getAssetPath("/hero-banana.png")}
-          alt="Abstract Glass Banana"
-          width={600}
-          height={600}
-          className="object-contain"
-          priority
-        />
-      </div>
+
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center relative z-10">
         <div className="flex-1 space-y-6">
