@@ -7,10 +7,10 @@ export function Footer() {
   const { dictionary } = useLocale();
 
   return (
-    <footer className="mt-20 border-t border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-8 text-center text-sm text-white/60">
+    <footer className="mt-20 border-t border-[var(--glass-border)]">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-8 text-center text-sm text-[var(--text-secondary)]">
         <p>{dictionary.footer}</p>
-        <p className="text-white/40">
+        <p className="text-[var(--text-muted)]">
           © {new Date().getFullYear()} {siteMeta.name}
         </p>
       </div>

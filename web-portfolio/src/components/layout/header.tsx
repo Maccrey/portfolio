@@ -14,10 +14,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 glass-nav">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-white hover:text-gradient transition-colors">
+        <Link href="/" className="text-lg font-semibold tracking-tight text-[var(--text-primary)] hover:text-gradient transition-colors">
           Maccrey.dev
         </Link>
-        <nav className="hidden gap-6 text-sm text-white/70 md:flex">
+        <nav className="hidden gap-6 text-sm text-[var(--text-secondary)] md:flex">
           {navigation.map((item) => {
             const key = item.labelKey.split(".")[1] as keyof typeof dictionary.nav;
             const isActive = pathname === item.href;
@@ -25,8 +25,8 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`transition hover:text-white ${
-                  isActive ? "text-white font-medium" : "text-white/70"
+                className={`transition hover:text-[var(--text-primary)] ${
+                  isActive ? "text-[var(--text-primary)] font-medium" : "text-[var(--text-secondary)]"
                 }`}
               >
                 {dictionary.nav[key]}

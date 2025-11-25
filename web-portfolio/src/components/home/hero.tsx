@@ -7,7 +7,7 @@ export function Hero() {
   const { dictionary, locale } = useLocale();
 
   return (
-    <section className="glass mb-12 rounded-3xl px-8 py-12 text-white relative overflow-hidden">
+    <section className="glass mb-12 rounded-3xl px-8 py-12 text-[var(--text-primary)] relative overflow-hidden">
       <div className="absolute top-0 right-0 -z-10 opacity-50 mix-blend-overlay">
         <Image
           src="/hero-banana.png"
@@ -27,23 +27,23 @@ export function Hero() {
           <h1 className="text-5xl font-bold leading-tight lg:text-7xl tracking-tight">
             <span className="text-gradient">{dictionary.hero.title}</span>
           </h1>
-          <p className="text-xl text-white/80 max-w-lg leading-relaxed">{dictionary.hero.subtitle}</p>
+          <p className="text-xl text-[var(--text-secondary)] max-w-lg leading-relaxed">{dictionary.hero.subtitle}</p>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-zinc-900 transition hover:scale-105 hover:shadow-lg hover:shadow-white/20"
+            className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-8 py-4 text-base font-bold text-[var(--page-bg)] transition hover:scale-105 hover:shadow-lg hover:shadow-[var(--glass-highlight)]"
           >
             {dictionary.hero.cta}
           </Link>
         </div>
         <div className="flex flex-1 flex-col gap-4">
-          <p className="text-sm font-semibold text-white/60 uppercase tracking-wider">{dictionary.hero.featuredTitle}</p>
+          <p className="text-sm font-semibold text-[var(--text-muted)] uppercase tracking-wider">{dictionary.hero.featuredTitle}</p>
           <ul className="grid gap-4">
             {featuredProjects.map((project) => {
               const copy = getProjectCopy(project, locale);
               return (
-                <li key={project.slug} className="glass-card rounded-2xl p-5 hover:bg-white/5 transition-colors">
-                  <p className="text-lg font-bold text-white mb-1">{copy.name}</p>
-                  <p className="text-sm text-white/70">{copy.summary}</p>
+                <li key={project.slug} className="glass-card rounded-2xl p-5 hover:bg-[var(--glass-surface)] transition-colors">
+                  <p className="text-lg font-bold text-[var(--text-primary)] mb-1">{copy.name}</p>
+                  <p className="text-sm text-[var(--text-secondary)]">{copy.summary}</p>
                 </li>
               );
             })}
