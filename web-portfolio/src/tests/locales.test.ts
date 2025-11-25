@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dictionaries } from "@/i18n/locales";
 
-type Dict = (typeof dictionaries)[keyof typeof dictionaries];
+
 
 function collectKeys(obj: unknown, prefix = ""): string[] {
   if (obj === null || typeof obj !== "object") {

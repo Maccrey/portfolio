@@ -15,6 +15,7 @@ const storageKey = "maccrey-theme";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     const stored = window.localStorage.getItem(storageKey) as Theme | null;
@@ -23,6 +24,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
       setTheme("light");
     }
+    setIsInitialized(true);
   }, []);
 
   useEffect(() => {
