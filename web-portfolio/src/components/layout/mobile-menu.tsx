@@ -11,11 +11,6 @@ export function MobileMenu() {
   const pathname = usePathname();
   const { dictionary } = useLocale();
 
-  // Close menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
   // Prevent scrolling when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -78,6 +73,7 @@ export function MobileMenu() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setIsOpen(false)}
                 className={`text-lg transition hover:text-[var(--text-primary)] ${
                   isActive
                     ? "font-bold text-[var(--text-primary)]"
