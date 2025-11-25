@@ -15,10 +15,8 @@ const storageKey = "maccrey-theme";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const stored = window.localStorage.getItem(storageKey) as Theme | null;
     if (stored) {
       setTheme(stored);
@@ -28,12 +26,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
     const root = document.documentElement;
     root.dataset.theme = theme;
     root.classList.toggle("dark", theme === "dark");
     window.localStorage.setItem(storageKey, theme);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const value = useMemo(
     () => ({
