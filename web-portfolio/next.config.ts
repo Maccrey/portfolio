@@ -6,7 +6,8 @@ const repoFromGithub =
     : undefined;
 
 const repoBase = process.env.NEXT_PUBLIC_BASE_PATH || repoFromGithub;
-const basePath = repoBase ? `/${repoBase}` : undefined;
+const disableBasePath = process.env.NO_BASE_PATH === "true";
+const basePath = disableBasePath ? undefined : repoBase ? `/${repoBase}` : undefined;
 
 const nextConfig: NextConfig = {
   output: "export",

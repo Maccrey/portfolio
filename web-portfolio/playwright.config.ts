@@ -1,11 +1,27 @@
+import fs from "fs";
+import path from "path";
 import { defineConfig, devices } from "@playwright/test";
 import { loadEnvConfig } from "@next/env";
 
 const projectDir = process.cwd();
-loadEnvConfig(projectDir);
+const { combinedEnv } = loadEnvConfig(projectDir, true);
+
+process.env.NEXT_PUBLIC_BASE_PATH = "";
 
 const PORT = 4123;
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ? `/${process.env.NEXT_PUBLIC_BASE_PATH}` : "";
+let resolvedBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? combinedEnv?.NEXT_PUBLIC_BASE_PATH;
+
+if (resolvedBasePath === undefined) {
+  const envPath = path.join(projectDir, ".env.local");
+  if (fs.existsSync(envPath)) {
+    const match = fs.readFileSync(envPath, "utf8").match(/^NEXT_PUBLIC_BASE_PATH=(.*)$/m);
+    if (match?.[1]) {
+      resolvedBasePath = match[1];
+    }
+  }
+}
+
+const BASE_PATH = resolvedBasePath ? `/${resolvedBasePath}` : "";
 const BASE_URL = `http://127.0.0.1:${PORT}${BASE_PATH}`;
 
 export default defineConfig({
@@ -32,5 +48,9 @@ export default defineConfig({
     url: BASE_URL,
     stdout: "pipe",
     stderr: "pipe",
+    env: {
+      NEXT_PUBLIC_BASE_PATH: "",
+      NO_BASE_PATH: "true",
+    },
   },
 });
