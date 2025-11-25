@@ -25,16 +25,16 @@ export function ContactLinks() {
   const { dictionary } = useLocale();
 
   return (
-    <section className="glass-panel rounded-3xl px-6 py-6 text-white">
-      <p className="mb-4 text-white/70">{dictionary.contact.description}</p>
-      <div className="grid gap-3 sm:grid-cols-3">
+    <section className="glass-card rounded-3xl px-8 py-8 text-white">
+      <p className="mb-6 text-lg text-white/80 text-center max-w-2xl mx-auto">{dictionary.contact.description}</p>
+      <div className="grid gap-4 sm:grid-cols-3">
         {contactItems.map((item) => (
           <a
             key={item.key}
             href={item.href}
             target={item.key === "github" ? "_blank" : undefined}
             rel={item.key === "github" ? "noreferrer" : undefined}
-            className="rounded-2xl border border-white/10 px-4 py-3 text-center text-sm font-semibold text-white transition hover:border-white/60"
+            className="glass rounded-2xl px-6 py-4 text-center text-sm font-bold text-white transition hover:bg-white/10 hover:scale-105 hover:shadow-lg"
           >
             {dictionary.contact[item.labelKey]}
           </a>

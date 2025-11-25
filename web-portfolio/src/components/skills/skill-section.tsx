@@ -17,11 +17,11 @@ export function SkillSection({ category, skills }: { category: SkillCategory; sk
   );
 
   return (
-    <section className="glass-panel rounded-3xl px-6 py-6 text-white">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-xl font-semibold">{dictionary.skillsSection.categories[category]}</h2>
+    <section className="glass-card rounded-3xl px-6 py-6 text-white h-full">
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-xl font-bold">{dictionary.skillsSection.categories[category]}</h2>
         <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${
+          className={`rounded-full px-3 py-1 text-xs font-bold text-white shadow-lg ${
             "bg-gradient-to-r " + badgeColors[category]
           }`}
         >
@@ -30,9 +30,9 @@ export function SkillSection({ category, skills }: { category: SkillCategory; sk
       </div>
       <ul className="space-y-3">
         {skills.map((skill) => (
-          <li key={skill.id} className="rounded-2xl border border-white/10 px-4 py-3">
-            <p className="text-base font-medium">{skill.name}</p>
-            <p className="text-sm text-white/70">{getSkillDescription(skill, locale)}</p>
+          <li key={skill.id} className="glass rounded-xl px-4 py-3 hover:bg-white/5 transition-colors">
+            <p className="text-base font-medium text-white/90">{skill.name}</p>
+            <p className="text-sm text-white/60 mt-1">{getSkillDescription(skill, locale)}</p>
           </li>
         ))}
       </ul>

@@ -25,11 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen antialiased relative">
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
         <AnalyticsScript />
         <AppProviders>
           <Header />
-          <main className="mx-auto mt-10 max-w-6xl px-6">{children}</main>
+          <main className="mx-auto mt-10 max-w-6xl px-6 relative z-10">{children}</main>
           <Footer />
         </AppProviders>
       </body>
