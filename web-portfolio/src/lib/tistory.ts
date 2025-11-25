@@ -19,7 +19,7 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
     const xml = await response.text();
     const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
 
-    const posts: BlogPost[] = items.slice(0, limit).map((item) => {
+    const posts: BlogPost[] = await Promise.all(items.slice(0, limit).map(async (item) => {
       const titleMatch = item.match(/<title>(.*?)<\/title>/);
       const linkMatch = item.match(/<link>(.*?)<\/link>/);
       const dateMatch = item.match(/<pubDate>(.*?)<\/pubDate>/);
@@ -44,6 +44,18 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         finalImageUrl = undefined;
       }
 
+      // If no image found in RSS, try to fetch OG image from the post URL
+      if (!finalImageUrl && link !== "#") {
+        try {
+          const ogImage = await fetchOgImage(link);
+          if (ogImage) {
+            finalImageUrl = ogImage;
+          }
+        } catch (e) {
+          console.error(`Failed to fetch OG image for ${link}`, e);
+        }
+      }
+
       // Create a plain text summary from description
       const summary = description
         .replace(/<[^>]+>/g, "") // Remove HTML tags
@@ -62,12 +74,24 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         summary,
         imageUrl: finalImageUrl,
       };
-    });
+    }));
 
     return posts;
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     return [];
+  }
+}
+
+async function fetchOgImage(url: string): Promise<string | undefined> {
+  try {
+    const response = await fetch(url, { next: { revalidate: 3600 } });
+    if (!response.ok) return undefined;
+    const html = await response.text();
+    const match = html.match(/<meta property="og:image" content="([^"]+)"/);
+    return match ? match[1] : undefined;
+  } catch (error) {
+    return undefined;
   }
 }
 
