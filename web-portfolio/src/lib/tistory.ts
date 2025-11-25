@@ -37,6 +37,7 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         description.match(/<image>[\s\S]*?<url>(.*?)<\/url>/);
         
       const imageUrl = imgMatch ? imgMatch[1] : undefined;
+      const finalImageUrl = imageUrl && imageUrl.startsWith("//") ? `https:${imageUrl}` : imageUrl;
 
       // Create a plain text summary from description
       const summary = description
@@ -54,7 +55,7 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         link,
         date: formattedDate,
         summary,
-        imageUrl,
+        imageUrl: finalImageUrl,
       };
     });
 

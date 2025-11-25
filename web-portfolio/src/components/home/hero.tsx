@@ -30,7 +30,7 @@ export function Hero() {
           <p className="text-xl text-[var(--text-secondary)] max-w-lg leading-relaxed">{dictionary.hero.subtitle}</p>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-8 py-4 text-base font-bold text-[var(--page-bg)] transition hover:scale-105 hover:shadow-lg hover:shadow-[var(--glass-highlight)]"
+            className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-8 py-4 text-base font-bold text-[var(--text-inverse)] transition hover:scale-105 hover:shadow-lg hover:shadow-[var(--glass-highlight)]"
           >
             {dictionary.hero.cta}
           </Link>

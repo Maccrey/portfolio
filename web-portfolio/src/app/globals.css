@@ -28,6 +28,9 @@ html {
   --accent-primary: #8b5cf6; /* Violet */
   --accent-secondary: #ec4899; /* Pink */
   --accent-glow: rgba(139, 92, 246, 0.3);
+  
+  /* Inverse Text for Buttons */
+  --text-inverse: #ffffff;
 }
 
 .dark {
@@ -47,6 +50,9 @@ html {
   
   /* Accents (Dark) */
   --accent-glow: rgba(139, 92, 246, 0.5);
+  
+  /* Inverse Text for Buttons (Dark) */
+  --text-inverse: #0f172a;
 }
 
 body {
