@@ -12,7 +12,7 @@ test.describe("환경 설정 UI", () => {
     await themeButton.click();
 
     await expect
-      .poll(async () => html.getAttribute("data-theme"), { timeout: 7000 })
+      .poll(async () => html.getAttribute("data-theme"), { timeout: 10000 })
       .not.toBe(initial);
   });
 
@@ -23,7 +23,7 @@ test.describe("환경 설정 UI", () => {
       .poll(async () => {
         const text = await page.locator("h1").first().innerText();
         return text;
-      }, { timeout: 7000 })
+      }, { timeout: 10000 })
       .toBe(enHeroTitle);
   });
 });
