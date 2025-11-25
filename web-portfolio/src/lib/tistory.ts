@@ -37,7 +37,12 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         description.match(/<image>[\s\S]*?<url>(.*?)<\/url>/);
         
       const imageUrl = imgMatch ? imgMatch[1] : undefined;
-      const finalImageUrl = imageUrl && imageUrl.startsWith("//") ? `https:${imageUrl}` : imageUrl;
+      let finalImageUrl = imageUrl && imageUrl.startsWith("//") ? `https:${imageUrl}` : imageUrl;
+
+      // Filter out Tistory's default no-image placeholder
+      if (finalImageUrl && finalImageUrl.includes("no-image-v1.png")) {
+        finalImageUrl = undefined;
+      }
 
       // Create a plain text summary from description
       const summary = description
@@ -73,5 +78,11 @@ function decodeHTMLEntities(text: string): string {
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/&lsquo;/g, "'")
+    .replace(/&rsquo;/g, "'")
+    .replace(/&ldquo;/g, '"')
+    .replace(/&rdquo;/g, '"')
+    .replace(/&hellip;/g, "...")
+    .replace(/&middot;/g, "·")
     .replace(/<!\[CDATA\[(.*?)\]\]>/g, "$1");
 }
