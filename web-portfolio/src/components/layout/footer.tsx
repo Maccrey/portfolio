@@ -13,6 +13,9 @@ export function Footer() {
         <p className="text-[var(--text-muted)]">
           © {new Date().getFullYear()} {siteMeta.name}
         </p>
+        <p className="text-[var(--text-muted)]">
+          E-Mail : maccrey@naver.com
+        </p>
       </div>
     </footer>
   );
