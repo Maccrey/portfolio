@@ -14,15 +14,15 @@ html {
   --page-bg: radial-gradient(circle at top left, #f0f9ff, #e0f2fe, #ffffff) no-repeat fixed;
   
   /* Glassmorphism Variables (Light) */
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-surface: rgba(255, 255, 255, 0.2);
-  --glass-highlight: rgba(255, 255, 255, 0.5);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-surface: rgba(255, 255, 255, 0.72);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.12);
   
   /* Text Colors (Light) */
-  --text-primary: #0f172a;
-  --text-secondary: rgba(15, 23, 42, 0.7);
-  --text-muted: rgba(15, 23, 42, 0.5);
+  --text-primary: #0b1226;
+  --text-secondary: rgba(11, 18, 38, 0.78);
+  --text-muted: rgba(11, 18, 38, 0.58);
   
   /* Accents */
   --accent-primary: #8b5cf6; /* Violet */
@@ -75,8 +75,8 @@ body {
 .glass-card {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.01) 100%
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.65) 100%
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
