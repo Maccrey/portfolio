@@ -6,7 +6,7 @@ export function LocaleSwitcher() {
   const { locale, availableLocales, setLocale } = useLocale();
 
   return (
-    <div className="flex items-center gap-2 text-sm text-white/80">
+    <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
       {availableLocales.map((code) => (
         <button
           key={code}
@@ -14,8 +14,8 @@ export function LocaleSwitcher() {
           onClick={() => setLocale(code)}
           className={`rounded-full px-2 py-1 transition ${
             locale === code
-              ? "bg-white text-zinc-900"
-              : "border border-white/20 text-white/70 hover:border-white/50"
+              ? "bg-[var(--text-primary)] text-[var(--text-inverse)] shadow-sm"
+              : "border border-[var(--glass-border)] text-[var(--text-secondary)] hover:border-[var(--text-muted)]"
           }`}
         >
           {code.toUpperCase()}

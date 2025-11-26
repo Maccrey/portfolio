@@ -19,7 +19,7 @@ export default function HomePageClient({ blogSection }: { blogSection: React.Rea
 
       <section className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-white">
+          <h2 className="text-2xl font-semibold text-[var(--text-secondary)]">
             {dictionary.sections.projects}
           </h2>
         </div>
@@ -31,7 +31,7 @@ export default function HomePageClient({ blogSection }: { blogSection: React.Rea
       </section>
 
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold text-white">
+        <h2 className="text-2xl font-semibold text-[var(--text-secondary)]">
           {dictionary.sections.skills}
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
@@ -42,7 +42,7 @@ export default function HomePageClient({ blogSection }: { blogSection: React.Rea
       </section>
 
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold text-white">
+        <h2 className="text-2xl font-semibold text-[var(--text-secondary)]">
           {dictionary.sections.contact}
         </h2>
         <ContactLinks />

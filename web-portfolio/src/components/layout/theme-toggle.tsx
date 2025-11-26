@@ -11,13 +11,15 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle theme"
       className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-        theme === "dark" ? "bg-slate-700" : "bg-sky-200"
+        theme === "dark" ? "bg-slate-700" : "bg-[var(--glass-surface)] border border-[var(--glass-border)]"
       }`}
     >
       <span className="sr-only">Toggle theme</span>
       <span
         className={`${
-          theme === "dark" ? "translate-x-7 bg-slate-950" : "translate-x-1 bg-white"
+          theme === "dark"
+            ? "translate-x-7 bg-slate-950"
+            : "translate-x-1 bg-white text-[var(--text-primary)]"
         } pointer-events-none flex h-6 w-6 transform items-center justify-center rounded-full shadow-lg ring-0 transition-all duration-200 ease-in-out`}
       >
         {theme === "dark" ? (
