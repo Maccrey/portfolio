@@ -262,66 +262,239 @@ export const projects: Project[] = [
       ko: {
         name: "점자 타자 연습기",
         summary:
-          "브라우저에서 바로 실행되는 점자 타자 인풋 연습 웹앱.",
+          "시각장애인을 위한 브라우저 기반 점자 타자 연습기. 개인화된 학습 환경에서 다양한 점자 문자를 연습하고 진행 상황을 추적할 수 있습니다.",
         problem:
-          "점자 표기법을 처음 접하는 교사/학습자가 소프트웨어 설치 없이 바로 연습할 도구가 부족.",
-        audience: "특수교사, 점자 학습 입문자",
+          "설치형 프로그램 없이 점자 6키 입력을 체계적으로 연습·기록할 수 있는 학습 도구가 부족.",
+        audience: "점자 학습자, 특수교사, 보조공학 교육 담당자",
         contribution:
-          "웹 표준 키보드 이벤트로 점자 6키 입력을 해석하고, 시각화 애니메이션 구현.",
+          "웹 표준 키보드 이벤트로 6키 패턴 엔진을 구현하고, 맞춤 학습 시나리오/진행도 저장, WAI-ARIA 내비게이션을 강화.",
         impact:
-          "월간 1천 회 입력 학습 데이터 확보, 피드백 만족도 4.8/5",
+          "월간 1천 회 이상의 입력 로그로 학습 난이도 튜닝, 만족도 4.8/5로 커뮤니티 피드백 반영",
         highlights: [
-          "접근성 ARIA 패턴 준수",
-          "점자 키보드 히트맵으로 학습 데이터 시각화",
-          "n8n으로 사용자 피드백을 Google Sheet에 자동 축적",
+          "접근성: 스크린리더 호환, 키보드 전용 인터랙션, 고대비 모드 지원",
+          "개인화: 사용자별 학습 계획과 진행률 저장, 점수 리포트 제공",
+          "커뮤니티: 피드백/학습 자료를 n8n + Google Sheet 파이프라인으로 수집·공유",
+          "성능: Vite 기반 경량 빌드와 Netlify 배포로 빠른 초기 로드",
         ],
       },
       en: {
         name: "Braille Typing Trainer",
-        summary: "Browser-based trainer for six-key braille input.",
+        summary:
+          "Browser-based braille typing trainer that lets visually impaired learners practice six-key input with progress tracking.",
         problem:
-          "Teachers and learners lacked an install-free tool to practice braille notation.",
-        audience: "Special education teachers and braille beginners",
+          "There were few install-free tools that offered structured braille practice and saved progress.",
+        audience: "Braille learners, special education teachers, assistive tech coaches",
         contribution:
-          "Parsed six-key patterns with standard keyboard events and built visualization animations.",
+          "Built a six-key parsing engine on standard keyboard events, added personalized lesson flows and saved progress, and tightened WAI-ARIA navigation.",
         impact:
-          "Captured 1,000 monthly typing sessions with a 4.8/5 satisfaction score.",
+          "Over 1K monthly practice logs used to tune difficulty; 4.8/5 satisfaction via community feedback.",
         highlights: [
-          "Followed ARIA accessibility patterns throughout.",
-          "Visualized practice data through a braille keyboard heatmap.",
-          "Automated feedback ingestion into Google Sheets via n8n.",
+          "Accessibility: screen reader-friendly, keyboard-first interactions, high-contrast mode.",
+          "Personalization: per-user lesson plans, progress storage, and score reports.",
+          "Community: collects and shares feedback/materials through an n8n + Google Sheet pipeline.",
+          "Performance: lightweight Vite build served on Netlify for fast first paint.",
         ],
       },
       ja: {
         name: "点字タイピングトレーナー",
         summary:
-          "ブラウザだけで動く6キー点字入力の練習用Webアプリ。",
+          "ブラウザで使える6キー点字入力の練習アプリ。学習者が進捗を追跡しながら点字を練習できます。",
         problem:
-          "点字表記を学び始めた教師・学習者がインストール不要で使える練習ツールが不足。",
-        audience: "特別支援学校の教師、点字学習の初心者",
+          "インストール不要で体系的に点字を練習・記録できるツールが不足していた。",
+        audience: "点字学習者、特別支援学校の教師、支援技術コーチ",
         contribution:
-          "標準キーボードイベントで6キー入力を解析し、可視化アニメーションを実装。",
+          "標準キーボードイベントで6キー入力エンジンを実装し、個別レッスンと進捗保存、WAI-ARIAナビゲーションを強化。",
         impact:
-          "月1,000件の入力データと満足度4.8/5のフィードバックを獲得。",
+          "月1,000件超の練習ログを元に難易度を調整し、満足度4.8/5のフィードバックを取得。",
         highlights: [
-          "ARIAアクセシビリティパターンを順守",
-          "点字キーボードのヒートマップで学習データを可視化",
-          "n8nでフィードバックをGoogle Sheetに自動蓄積",
+          "アクセシビリティ: スクリーンリーダー対応・キーボード操作・ハイコントラストモード",
+          "パーソナライズ: ユーザーごとの学習計画と進捗保存、スコアレポート",
+          "コミュニティ: n8n＋Google Sheetでフィードバックと教材を収集・共有",
+          "パフォーマンス: Viteの軽量ビルドをNetlifyで高速配信",
         ],
       },
       zh: {
         name: "點字打字練習器",
-        summary: "在瀏覽器即可練習六鍵點字輸入的 Web App。",
-        problem: "教師與學習者缺乏免安裝就能練習點字的工具。",
-        audience: "特殊教育教師、點字入門者",
+        summary: "讓視障學習者能在瀏覽器練習六鍵點字並追蹤進度的 Web 應用。",
+        problem: "缺乏免安裝、可系統化練習並保存進度的點字工具。",
+        audience: "點字學習者、特殊教育教師、輔具教練",
         contribution:
-          "以標準鍵盤事件解析六鍵輸入，並加入視覺化動畫。",
+          "以標準鍵盤事件打造 6 鍵解析引擎，提供個人化課程與進度存取，並加強 WAI-ARIA 導航。",
         impact:
-          "每月收集 1,000 筆練習資料，滿意度 4.8/5。",
+          "每月 1,000+ 筆練習紀錄用於調整難度，社群滿意度 4.8/5。",
         highlights: [
-          "遵循 ARIA 無障礙模式",
-          "以點字鍵盤熱度圖呈現學習數據",
-          "透過 n8n 將使用者回饋自動寫入 Google Sheet",
+          "無障礙: 支援螢幕閱讀器、鍵盤操作與高對比模式",
+          "個人化: 使用者課程計畫、進度儲存與分數報告",
+          "社群: 透過 n8n + Google Sheet 蒐集並分享回饋/教材",
+          "效能: Vite 輕量構建，Netlify 快速佈署與載入",
+        ],
+      },
+    },
+  },
+  {
+    slug: "work-dashboard",
+    stack: ["HTML", "CSS", "Vanilla JS", "Playwright"],
+    timeline: "2025.10",
+    status: "live",
+    links: [
+      { label: "GitHub", href: "https://github.com/Maccrey/work_dash" },
+      { label: "Demo", href: "https://dashboard.maccrey.com/" },
+    ],
+    translations: {
+      ko: {
+        name: "업무 대시보드",
+        summary:
+          "메모, 계산기, 할 일, 출퇴근, 뽀모도로, TTS 스케줄러를 한 화면에서 관리하는 생산성 대시보드.",
+        problem:
+          "분산된 툴로 관리하던 일정·메모·근태 데이터를 한곳에서 모니터링하고 유지보수 가능한 테스트 체계를 갖추기 어려움.",
+        audience: "개발자, PM, 프리랜서 등 개인 업무를 한 화면에서 관리하려는 사용자",
+        contribution:
+          "24개 Playwright 시나리오로 3브라우저(Cr/FF/WebKit) 품질 검증, UI 타이밍 조건부 대기 가이드 제안, localStorage 지속성 확인.",
+        impact:
+          "핵심 카드 기능 100% 통과(메모/할 일/계산기/설정/데이터 지속성), 전체 70.8% 통과로 안정성 지표 확보.",
+        highlights: [
+          "메모·할 일·계산기·뽀모도로·TTS·출퇴근·카드 토글을 갖춘 데스크톱 위젯형 UX",
+          "조건부 대기/명확한 셀렉터로 UI 타이밍 이슈 최소화하는 테스트 가이드",
+          "localStorage에 카드 표시 상태와 데이터 저장, 새로고침 후에도 동일 상태 유지",
+          "README_TEST/TEST_RESULTS/TESTING_GUIDE로 테스트 커버리지와 개선 우선순위 문서화",
+        ],
+      },
+      en: {
+        name: "Work Dashboard",
+        summary:
+          "Productivity dashboard that combines notes, calculator, todos, clock-in/out, pomodoro, and TTS scheduler in one view.",
+        problem:
+          "Hard to monitor dispersed todo/memo/attendance data and keep a maintainable test suite across browsers.",
+        audience: "Developers, PMs, and freelancers who want a single-screen personal workspace.",
+        contribution:
+          "Authored 24 Playwright scenarios across Chromium/Firefox/WebKit, proposed conditional waits to fix UI timing, verified localStorage persistence.",
+        impact:
+          "Core cards (notes/todos/calculator/settings/persistence) at 100% pass; overall 70.8% pass rate providing a stability baseline.",
+        highlights: [
+          "Desktop-style cards for notes, todos, calculator, pomodoro, TTS scheduler, time tracking, and card toggles.",
+          "Testing guide favors explicit selectors and conditional waits to reduce flaky UI timing.",
+          "Persists card visibility and data in localStorage so refreshes keep the same layout.",
+          "Documented quality status via README_TEST, TEST_RESULTS, and TESTING_GUIDE.",
+        ],
+      },
+      ja: {
+        name: "業務ダッシュボード",
+        summary:
+          "メモ、計算機、ToDo、出退勤、ポモドーロ、TTSスケジューラーを1画面にまとめた生産性ダッシュボード。",
+        problem:
+          "分散したToDo/メモ/勤怠データを一元管理し、ブラウザ横断でメンテしやすいテスト体系を作るのが難しい。",
+        audience: "1画面で個人業務を管理したい開発者・PM・フリーランサー",
+        contribution:
+          "Chromium/Firefox/WebKit向けに24のPlaywrightシナリオを作成し、UIタイミング改善の条件付き待機ガイドを提示、localStorageの永続性を検証。",
+        impact:
+          "メモ/ToDo/計算機/設定/永続性カードは100%合格、全体70.8%合格で安定性のベースラインを確立。",
+        highlights: [
+          "メモ・ToDo・計算機・ポモドーロ・TTS・出退勤・カード切替を備えたデスクトップ風カードUX",
+          "明示的セレクターと条件付き待機でUIタイミング由来のフレークを削減するテストガイド",
+          "localStorageにカード表示状態とデータを保存し、リロード後もレイアウトを維持",
+          "README_TEST/TEST_RESULTS/TESTING_GUIDEで品質状況と改善優先度を文書化",
+        ],
+      },
+      zh: {
+        name: "工作儀表板",
+        summary:
+          "把備忘錄、計算機、待辦、打卡、番茄鐘、TTS 排程放在同一畫面的生產力儀表板。",
+        problem:
+          "難以同時監控分散的待辦/備忘錄/出勤資料，並在多瀏覽器維持可維護的測試體系。",
+        audience: "想在單一畫面管理個人工作的開發者、PM、自由工作者",
+        contribution:
+          "為 Chromium/Firefox/WebKit 撰寫 24 個 Playwright 情境，提出條件等待以修正 UI 時序，並驗證 localStorage 持久化。",
+        impact:
+          "備忘錄/待辦/計算機/設定/持久化卡片 100% 通過，整體通過率 70.8% 作為穩定性基線。",
+        highlights: [
+          "備忘錄、待辦、計算機、番茄鐘、TTS、出勤、卡片切換的桌面卡片式體驗",
+          "以明確選擇器與條件等待降低 UI 時序造成的測試不穩",
+          "localStorage 儲存卡片顯示狀態與資料，重新整理後保持佈局",
+          "透過 README_TEST、TEST_RESULTS、TESTING_GUIDE 將品質狀態與改進優先度文件化",
+        ],
+      },
+    },
+  },
+  {
+    slug: "symbol-checker",
+    stack: ["HTML", "CSS", "Vanilla JS", "Chart.js"],
+    timeline: "2025.11",
+    status: "live",
+    links: [
+      { label: "GitHub", href: "https://github.com/Maccrey/symbol-checker" },
+      { label: "Demo", href: "https://checker.maccrey.com/" },
+    ],
+    translations: {
+      ko: {
+        name: "특수문자 검사기",
+        summary:
+          "특수문자 개수·괄호/인용부호 짝을 자동 검사하고, 두 문서를 diff 모드로 비교하는 웹 도구.",
+        problem:
+          "괄호·따옴표 누락이나 두 칸 띄어쓰기를 수동으로 찾기 어렵고, 문서 간 차이를 빠르게 대조하기 힘듦.",
+        audience: "기술 문서/보고서 작성자, 편집자, 번역가",
+        contribution:
+          "특수문자 카운트와 불균형 검사, Chart.js 시각화, diff 모드 비교, 붙여넣기·다운로드 워크플로우 설계.",
+        impact:
+          "한 번의 검사로 괄호/인용부호 누락을 즉시 확인해 교정 시간 단축, 반복 검수 정확도 향상.",
+        highlights: [
+          "괄호·인용부호 짝 검증 및 누락 위치 하이라이트",
+          "특수문자 유형별 카운트와 빈도 차트",
+          "두 문서 내용을 diff 모드로 비교해 상이한 구간 표시",
+          "텍스트 붙여넣기/초기화/다운로드 지원으로 편집 워크플로우 간소화",
+        ],
+      },
+      en: {
+        name: "Symbol Checker",
+        summary:
+          "Web tool that counts special characters, checks unmatched brackets/quotes, and compares two documents via diff mode.",
+        problem:
+          "Manually spotting missing pairs or double spaces is slow, and cross-checking differences between docs is tedious.",
+        audience: "Technical writers, editors, translators",
+        contribution:
+          "Built special-character counters, imbalance detection, Chart.js visuals, diff comparison, and paste/download flows.",
+        impact:
+          "Cuts proofreading time by surfacing missing pairs instantly and improves accuracy across repeated checks.",
+        highlights: [
+          "Validates bracket/quote pairs and highlights missing positions",
+          "Counts special characters and visualizes frequency with charts",
+          "Diff mode to compare two documents and mark divergent lines",
+          "Paste/reset/download actions streamline the editing loop",
+        ],
+      },
+      ja: {
+        name: "特殊文字チェッカー",
+        summary:
+          "特殊文字の数と括弧/引用符のペア漏れを自動検出し、2つの文書をdiffモードで比較できるWebツール。",
+        problem:
+          "括弧や引用符の抜け、二重スペースを手作業で見つけるのは非効率で、文書差分の確認も手間がかかる。",
+        audience: "技術文書・レポートの執筆者、編集者、翻訳者",
+        contribution:
+          "特殊文字カウントと不整合検知、Chart.jsによる可視化、diff比較、貼り付け/ダウンロードのフローを設計。",
+        impact:
+          "ペア抜けを即座に可視化して校正時間を短縮し、反復チェックの精度を向上。",
+        highlights: [
+          "括弧・引用符のペア検証と欠落箇所のハイライト",
+          "特殊文字タイプ別カウントと頻度チャート表示",
+          "2文書をdiffモードで比較し差分行をマーク",
+          "貼り付け・リセット・ダウンロードで編集フローを簡素化",
+        ],
+      },
+      zh: {
+        name: "特殊符號檢查器",
+        summary:
+          "自動統計特殊符號、檢查括號/引號是否成對，並以 diff 模式比較兩份文件的網頁工具。",
+        problem:
+          "手動找出缺失的括號或雙空格效率低，也難以快速比對兩份文件的差異。",
+        audience: "技術寫作者、編輯、翻譯人員",
+        contribution:
+          "實作特殊符號計數與不平衡偵測、Chart.js 視覺化、diff 比對，以及貼上/下載流程。",
+        impact:
+          "即時顯示缺失的括號/引號，縮短校對時間並提高重複檢查的準確度。",
+        highlights: [
+          "檢查括號與引號配對，標示缺失位置",
+          "統計特殊符號並以圖表呈現頻率",
+          "diff 模式比較兩份文件並標出差異行",
+          "支援貼上、重置、下載以簡化編輯流程",
         ],
       },
     },
