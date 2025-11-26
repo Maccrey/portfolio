@@ -6,12 +6,13 @@ import { AnalyticsScript } from "@/components/analytics/analytics-script";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio.maccrey.com"),
   title: "Maccrey Dev Portfolio",
   description: "50세에 개발을 시작한 Maccrey의 소셜 임팩트 중심 포트폴리오",
   openGraph: {
     title: "Maccrey Dev Portfolio",
     description: "사람들의 삶을 더 나은 방향으로 바꾸는 프로젝트와 스킬을 소개합니다.",
-    url: "https://maccrey.dev",
+    url: "https://portfolio.maccrey.com",
     siteName: "Maccrey Dev Portfolio",
     locale: "ko_KR",
     type: "website",

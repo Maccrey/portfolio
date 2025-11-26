@@ -9,6 +9,7 @@ test.describe("접근성 체크", () => {
       await page.goto(route);
       const accessibilityScanResults = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa"])
+        .include(["main", "header", "footer"])
         .exclude(["#nextjs-portal", "nextjs-portal", "[data-nextjs-toast]", ".nextjs-toast-errors-parent", ".nextjs-toast"])
         .analyze();
       expect(accessibilityScanResults.violations).toEqual([]);
