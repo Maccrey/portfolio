@@ -9,13 +9,13 @@ export function ProjectDetail({ project }: { project: Project }) {
   const copy = getProjectCopy(project, locale);
 
   return (
-    <article className="glass-panel rounded-3xl px-8 py-8 text-white">
+    <article className="glass-panel rounded-3xl px-8 py-8 text-[var(--text-primary)]">
       <div className="mb-6 space-y-2">
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-200/80">
           {project.timeline}
         </p>
         <h1 className="text-4xl font-semibold">{copy.name}</h1>
-        <p className="text-white/70">{copy.summary}</p>
+        <p className="text-[var(--text-secondary)]">{copy.summary}</p>
       </div>
       <div className="grid gap-8 md:grid-cols-2">
         <DetailSection label={dictionary.projectDetail.labels.problem} value={copy.problem} />
@@ -30,7 +30,10 @@ export function ProjectDetail({ project }: { project: Project }) {
         <h2 className="text-lg font-semibold">{dictionary.projectDetail.stack}</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {project.stack.map((tech) => (
-            <span key={tech} className="rounded-full bg-white/10 px-3 py-1 text-sm">
+            <span
+              key={tech}
+              className="rounded-full border border-[var(--glass-border)] bg-[var(--glass-surface)] px-3 py-1 text-sm text-[var(--text-primary)]"
+            >
               {tech}
             </span>
           ))}
@@ -38,7 +41,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       </div>
       <div className="mt-8 space-y-3">
         <h2 className="text-lg font-semibold">{dictionary.projectDetail.highlights}</h2>
-        <ul className="list-disc space-y-2 pl-5 text-white/80">
+        <ul className="list-disc space-y-2 pl-5 text-[var(--text-secondary)]">
           {copy.highlights.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -51,7 +54,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm font-semibold"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-surface)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] shadow-sm"
           >
             {link.label}
           </a>
@@ -64,8 +67,8 @@ export function ProjectDetail({ project }: { project: Project }) {
 function DetailSection({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.3em] text-white/50">{label}</p>
-      <p className="text-base text-white/90">{value}</p>
+      <p className="text-xs uppercase tracking-[0.3em] text-[var(--text-muted)]">{label}</p>
+      <p className="text-base text-[var(--text-primary)]">{value}</p>
     </div>
   );
 }

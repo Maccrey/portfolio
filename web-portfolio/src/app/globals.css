@@ -103,6 +103,30 @@ body {
   border-bottom: 1px solid var(--glass-border);
 }
 
+.glass-panel {
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.75) 100%
+    ),
+    var(--glass-surface);
+  color: var(--text-primary);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.dark .glass-panel {
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    ),
+    var(--glass-surface);
+  color: var(--text-primary);
+}
+
 /* Text Utilities */
 .text-gradient {
   background: linear-gradient(to right, #c084fc, #f472b6);

@@ -9,14 +9,14 @@ export default function ProjectsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="glass-panel rounded-3xl px-8 py-10 text-white">
+      <div className="glass-panel rounded-3xl px-8 py-10 text-[var(--text-primary)]">
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-200/80">
           {dictionary.pages.projects.badge}
         </p>
         <h1 className="mt-2 text-4xl font-semibold">
           {dictionary.sections.projects}
         </h1>
-        <p className="mt-3 text-white/70">{dictionary.pages.projects.description}</p>
+        <p className="mt-3 text-[var(--text-secondary)]">{dictionary.pages.projects.description}</p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
