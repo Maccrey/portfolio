@@ -5,14 +5,19 @@ import { AppProviders } from "@/providers";
 import { AnalyticsScript } from "@/components/analytics/analytics-script";
 import "./globals.css";
 
+const siteUrl = "https://portfolio.maccrey.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio.maccrey.com"),
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   title: "Maccrey Dev Portfolio",
   description: "50세에 개발을 시작한 Maccrey의 소셜 임팩트 중심 포트폴리오",
   openGraph: {
     title: "Maccrey Dev Portfolio",
     description: "사람들의 삶을 더 나은 방향으로 바꾸는 프로젝트와 스킬을 소개합니다.",
-    url: "https://portfolio.maccrey.com",
+    url: siteUrl,
     siteName: "Maccrey Dev Portfolio",
     locale: "ko_KR",
     type: "website",

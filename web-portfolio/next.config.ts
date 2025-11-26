@@ -1,13 +1,11 @@
 import type { NextConfig } from "next";
 
-const repoFromGithub =
-  process.env.GITHUB_ACTIONS && process.env.GITHUB_REPOSITORY
-    ? process.env.GITHUB_REPOSITORY.split("/")[1]
-    : undefined;
-
-const repoBase = process.env.NEXT_PUBLIC_BASE_PATH || repoFromGithub;
+const basePathEnv = process.env.NEXT_PUBLIC_BASE_PATH;
 const disableBasePath = process.env.NO_BASE_PATH === "true";
-const basePath = disableBasePath ? undefined : repoBase ? `/${repoBase}` : undefined;
+const basePath =
+  !disableBasePath && basePathEnv
+    ? `/${basePathEnv.replace(/^\//, "")}`
+    : undefined;
 
 const nextConfig: NextConfig = {
   output: "export",
