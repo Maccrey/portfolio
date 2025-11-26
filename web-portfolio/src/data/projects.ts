@@ -28,13 +28,77 @@ const defaultLocale: Locale = "ko";
 
 export const projects: Project[] = [
   {
+    slug: "personal-play",
+    stack: ["Next.js", "Firebase", "GitHub Pages", "TailwindCSS"],
+    timeline: "2024.01 - Present",
+    status: "live",
+    links: [
+      { label: "GitHub", href: "https://github.com/Maccrey/personalplay" },
+      { label: "Demo", href: "https://maccrey.com/" },
+    ],
+    translations: {
+      ko: {
+        name: "Personal Play",
+        summary: "한국어, 영어, 일본어를 지원하는 재미있고 전문적인 다국어 심리테스트 플랫폼.",
+        problem: "기존 심리테스트 사이트의 과도한 광고와 부족한 다국어 지원, 모바일 최적화 미흡 문제를 해결.",
+        audience: "자기이해와 재미를 추구하는 전 세계 사용자",
+        contribution: "Next.js 14 Static Export로 성능 최적화, 다국어 SEO/OG 태그 자동화, Firebase Analytics 연동.",
+        impact: "88개 이상의 전문 테스트 제공, 실시간 방문자 집계 및 국가별 맞춤 콘텐츠 제공.",
+        highlights: [
+          "연애, 성격 등 6개 카테고리의 88개 전문 테스트",
+          "접속 국가 기반 자동 언어 감지 및 전환 (KR/EN/JA)",
+          "GDPR 준수 광고 제어 및 SEO 최적화",
+        ],
+      },
+      en: {
+        name: "Personal Play",
+        summary: "A fun and professional multilingual psychological test platform supporting Korean, English, and Japanese.",
+        problem: "Addressed issues of excessive ads, lack of multilingual support, and poor mobile optimization in existing platforms.",
+        audience: "Global users seeking self-discovery and entertainment",
+        contribution: "Optimized performance with Next.js 14 Static Export, automated multilingual SEO/OG tags, and integrated Firebase Analytics.",
+        impact: "Provides 88+ professional tests, real-time visitor tracking, and localized content.",
+        highlights: [
+          "88 professional tests across 6 categories including Love and Personality",
+          "Automatic language detection and switching (KR/EN/JA)",
+          "GDPR-compliant ad control and SEO optimization",
+        ],
+      },
+      ja: {
+        name: "Personal Play",
+        summary: "韓国語、英語、日本語に対応した、楽しくて専門的な多言語心理テストプラットフォーム。",
+        problem: "既存サイトの過度な広告や多言語対応の欠如、モバイル最適化不足を解決。",
+        audience: "自己理解や楽しみを求める世界中のユーザー",
+        contribution: "Next.js 14 Static Exportでパフォーマンスを最適化し、多言語SEO/OGタグの自動化、Firebase Analyticsを統合。",
+        impact: "88以上の専門テストを提供し、リアルタイムの訪問者追跡とローカライズされたコンテンツを実現。",
+        highlights: [
+          "恋愛、性格など6つのカテゴリーにわたる88の専門テスト",
+          "接続国に基づいた言語の自動検出と切り替え（KR/EN/JA）",
+          "GDPR準拠の広告制御とSEO最適化",
+        ],
+      },
+      zh: {
+        name: "Personal Play",
+        summary: "支援韓語、英語、日語的有趣且專業的多語言心理測驗平台。",
+        problem: "解決現有平台廣告過多、缺乏多語言支援及移動端優化不足的問題。",
+        audience: "尋求自我探索與娛樂的全球用戶",
+        contribution: "使用 Next.js 14 Static Export 優化效能，自動化多語言 SEO/OG 標籤，並整合 Firebase Analytics。",
+        impact: "提供 88 個以上的專業測驗，即時追蹤訪客，並提供在地化內容。",
+        highlights: [
+          "涵蓋戀愛、性格等 6 大類別的 88 個專業測驗",
+          "基於連線國家的自動語言偵測與切換 (KR/EN/JA)",
+          "符合 GDPR 的廣告控制與 SEO 優化",
+        ],
+      },
+    },
+  },
+  {
     slug: "study-duck",
     stack: ["Flutter", "Firebase", "Riverpod", "GitHub Actions"],
     timeline: "2023.06 - 2024.02",
     status: "live",
     links: [
-      { label: "GitHub", href: "https://github.com/Maccrey/study-duck" },
-      { label: "Demo", href: "https://studyduck.app" },
+      { label: "GitHub", href: "https://github.com/Hummingbird-Team-Project/hummingbird-app" },
+      { label: "Demo", href: "https://www.studyduck.net/" },
     ],
     translations: {
       ko: {
@@ -112,7 +176,7 @@ export const projects: Project[] = [
     timeline: "2022.03 - 2023.01",
     status: "prototype",
     links: [
-      { label: "GitHub", href: "https://github.com/Maccrey/braille-dashboard" },
+      { label: "GitHub", href: "https://github.com/Maccrey/Task-Manager-Cloudtype" },
     ],
     translations: {
       ko: {
@@ -191,8 +255,8 @@ export const projects: Project[] = [
     timeline: "2021.10 - 2022.02",
     status: "live",
     links: [
-      { label: "GitHub", href: "https://github.com/Maccrey/braille-typing" },
-      { label: "Demo", href: "https://braille-typing.web.app" },
+      { label: "GitHub", href: "https://github.com/Maccrey/braille_typing_EX" },
+      { label: "Demo", href: "https://typing.maccrey.com/" },
     ],
     translations: {
       ko: {
