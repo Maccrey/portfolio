@@ -14,15 +14,16 @@ const LocaleContext = createContext<LocaleContextValue | undefined>(undefined);
 
 const storageKey = "maccrey-locale";
 
-const getInitialLocale = () => {
-  if (typeof window === "undefined") return "ko";
-  const stored = window.localStorage.getItem(storageKey) as Locale | null;
-  if (stored && locales.includes(stored)) return stored;
-  return "ko";
-};
-
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>(getInitialLocale);
+  const [locale, setLocale] = useState<Locale>("ko");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem(storageKey) as Locale | null;
+    if (stored && locales.includes(stored)) {
+      setLocale(stored);
+    }
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale;
