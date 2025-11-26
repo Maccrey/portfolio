@@ -43,7 +43,7 @@ export const projects: Project[] = [
         problem: "기존 심리테스트 사이트의 과도한 광고와 부족한 다국어 지원, 모바일 최적화 미흡 문제를 해결.",
         audience: "자기이해와 재미를 추구하는 전 세계 사용자",
         contribution: "Next.js 14 Static Export로 성능 최적화, 다국어 SEO/OG 태그 자동화, Firebase Analytics 연동.",
-        impact: "88개 이상의 전문 테스트 제공, 실시간 방문자 집계 및 국가별 맞춤 콘텐츠 제공.",
+        impact: "120개 이상의 전문 테스트 제공, 실시간 방문자 집계 및 국가별 맞춤 콘텐츠 제공.",
         highlights: [
           "연애, 성격 등 6개 카테고리의 88개 전문 테스트",
           "접속 국가 기반 자동 언어 감지 및 전환 (KR/EN/JA)",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
         problem: "Addressed issues of excessive ads, lack of multilingual support, and poor mobile optimization in existing platforms.",
         audience: "Global users seeking self-discovery and entertainment",
         contribution: "Optimized performance with Next.js 14 Static Export, automated multilingual SEO/OG tags, and integrated Firebase Analytics.",
-        impact: "Provides 88+ professional tests, real-time visitor tracking, and localized content.",
+        impact: "Provides 120+ professional tests, real-time visitor tracking, and localized content.",
         highlights: [
           "88 professional tests across 6 categories including Love and Personality",
           "Automatic language detection and switching (KR/EN/JA)",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
         contribution: "Next.js 14 Static Exportでパフォーマンスを最適化し、多言語SEO/OGタグの自動化、Firebase Analyticsを統合。",
         impact: "88以上の専門テストを提供し、リアルタイムの訪問者追跡とローカライズされたコンテンツを実現。",
         highlights: [
-          "恋愛、性格など6つのカテゴリーにわたる88の専門テスト",
+          "恋愛、性格など6つのカテゴリーにわたる120の専門テスト",
           "接続国に基づいた言語の自動検出と切り替え（KR/EN/JA）",
           "GDPR準拠の広告制御とSEO最適化",
         ],
@@ -82,7 +82,7 @@ export const projects: Project[] = [
         problem: "解決現有平台廣告過多、缺乏多語言支援及移動端優化不足的問題。",
         audience: "尋求自我探索與娛樂的全球用戶",
         contribution: "使用 Next.js 14 Static Export 優化效能，自動化多語言 SEO/OG 標籤，並整合 Firebase Analytics。",
-        impact: "提供 88 個以上的專業測驗，即時追蹤訪客，並提供在地化內容。",
+        impact: "提供 120 個以上的專業測驗，即時追蹤訪客，並提供在地化內容。",
         highlights: [
           "涵蓋戀愛、性格等 6 大類別的 88 個專業測驗",
           "基於連線國家的自動語言偵測與切換 (KR/EN/JA)",
