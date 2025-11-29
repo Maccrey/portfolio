@@ -6,17 +6,12 @@ export interface BlogPost {
   imageUrl?: string;
 }
 
+const RSS_URL = "https://code-lab.tistory.com/rss";
+const RSS_CORS_FALLBACK = "https://api.allorigins.win/raw?url=https%3A%2F%2Fcode-lab.tistory.com%2Frss";
+
 export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]> {
   try {
-    const response = await fetch("https://code-lab.tistory.com/rss", {
-      next: { revalidate: 3600 }, // Revalidate every hour
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch RSS feed");
-    }
-
-    const xml = await response.text();
+    const xml = await fetchRssText({ revalidateSeconds: 3600, allowFallback: true });
     return parseRssFeed(xml, { limit, fetchOgImages: true });
   } catch (error) {
     console.error("Error fetching blog posts:", error);
@@ -26,15 +21,7 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
 
 export async function getLatestBlogPostsClient(limit: number = 4): Promise<BlogPost[]> {
   try {
-    const response = await fetch("https://code-lab.tistory.com/rss", {
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch RSS feed");
-    }
-
-    const xml = await response.text();
+    const xml = await fetchRssText({ cache: "no-store", allowFallback: true });
     return parseRssFeed(xml, { limit, fetchOgImages: false });
   } catch (error) {
     console.error("Error fetching blog posts on client:", error);
@@ -113,6 +100,43 @@ async function fetchOgImage(url: string): Promise<string | undefined> {
   } catch {
     return undefined;
   }
+}
+
+async function fetchRssText({
+  cache,
+  revalidateSeconds,
+  allowFallback,
+}: {
+  cache?: RequestCache;
+  revalidateSeconds?: number;
+  allowFallback: boolean;
+}): Promise<string> {
+  const sources = [RSS_URL, ...(allowFallback ? [RSS_CORS_FALLBACK] : [])];
+
+  let lastError: unknown;
+
+  for (const url of sources) {
+    try {
+      const response = await fetch(url, {
+        cache,
+        next: revalidateSeconds ? { revalidate: revalidateSeconds } : undefined,
+      });
+
+      if (!response.ok) {
+        lastError = new Error(`Failed to fetch RSS feed: ${response.status}`);
+        continue;
+      }
+
+      const xml = await response.text();
+      if (xml.includes("<item")) {
+        return xml;
+      }
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError instanceof Error ? lastError : new Error("Failed to fetch RSS feed");
 }
 
 function decodeHTMLEntities(text: string): string {
