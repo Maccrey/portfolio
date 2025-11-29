@@ -9,7 +9,15 @@ const badgeColors: Record<SkillCategory, string> = {
   usable: "from-teal-500 to-emerald-500",
 };
 
-export function SkillSection({ category, skills }: { category: SkillCategory; skills: Skill[] }) {
+export function SkillSection({
+  category,
+  skills,
+  className = "",
+}: {
+  category: SkillCategory;
+  skills: Skill[];
+  className?: string;
+}) {
   const { locale, dictionary } = useLocale();
   const countLabel = dictionary.skillsSection.countLabel.replace(
     "{{count}}",
@@ -17,7 +25,7 @@ export function SkillSection({ category, skills }: { category: SkillCategory; sk
   );
 
   return (
-    <section className="glass-card rounded-3xl px-6 py-6 text-[var(--text-primary)] h-full">
+    <section className={`glass-card rounded-3xl px-6 py-6 text-[var(--text-primary)] h-full ${className}`}>
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-xl font-bold">{dictionary.skillsSection.categories[category]}</h2>
         <span

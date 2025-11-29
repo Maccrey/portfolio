@@ -17,9 +17,36 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
     }
 
     const xml = await response.text();
-    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+    return parseRssFeed(xml, { limit, fetchOgImages: true });
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    return [];
+  }
+}
 
-    const posts: BlogPost[] = await Promise.all(items.slice(0, limit).map(async (item) => {
+export async function getLatestBlogPostsClient(limit: number = 4): Promise<BlogPost[]> {
+  try {
+    const response = await fetch("https://code-lab.tistory.com/rss", {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch RSS feed");
+    }
+
+    const xml = await response.text();
+    return parseRssFeed(xml, { limit, fetchOgImages: false });
+  } catch (error) {
+    console.error("Error fetching blog posts on client:", error);
+    return [];
+  }
+}
+
+async function parseRssFeed(xml: string, options: { limit: number; fetchOgImages: boolean }): Promise<BlogPost[]> {
+  const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+
+  const posts: BlogPost[] = await Promise.all(
+    items.slice(0, options.limit).map(async (item) => {
       const titleMatch = item.match(/<title>(.*?)<\/title>/);
       const linkMatch = item.match(/<link>(.*?)<\/link>/);
       const dateMatch = item.match(/<pubDate>(.*?)<\/pubDate>/);
@@ -30,22 +57,19 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
       const dateStr = dateMatch ? dateMatch[1] : new Date().toISOString();
       const description = descriptionMatch ? decodeHTMLEntities(descriptionMatch[1]) : "";
 
-      // Extract image from description - try multiple patterns
-      const imgMatch = 
+      const imgMatch =
         description.match(/<img[^>]+src=["']([^"']+)["']/) ||
         description.match(/src=["']([^"']+)["']/) ||
         description.match(/<image>[\s\S]*?<url>(.*?)<\/url>/);
-        
+
       const imageUrl = imgMatch ? imgMatch[1] : undefined;
       let finalImageUrl = imageUrl && imageUrl.startsWith("//") ? `https:${imageUrl}` : imageUrl;
 
-      // Filter out Tistory's default no-image placeholder
       if (finalImageUrl && finalImageUrl.includes("no-image-v1.png")) {
         finalImageUrl = undefined;
       }
 
-      // If no image found in RSS, try to fetch OG image from the post URL
-      if (!finalImageUrl && link !== "#") {
+      if (options.fetchOgImages && !finalImageUrl && link !== "#") {
         try {
           const ogImage = await fetchOgImage(link);
           if (ogImage) {
@@ -56,14 +80,13 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         }
       }
 
-      // Create a plain text summary from description
-      const summary = description
-        .replace(/<[^>]+>/g, "") // Remove HTML tags
-        .replace(/&nbsp;/g, " ")
-        .trim()
-        .slice(0, 100) + "...";
+      const summary =
+        description
+          .replace(/<[^>]+>/g, "")
+          .replace(/&nbsp;/g, " ")
+          .trim()
+          .slice(0, 100) + "...";
 
-      // Format date to YYYY.MM.DD
       const dateObj = new Date(dateStr);
       const formattedDate = `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, "0")}.${String(dateObj.getDate()).padStart(2, "0")}`;
 
@@ -74,13 +97,10 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
         summary,
         imageUrl: finalImageUrl,
       };
-    }));
+    })
+  );
 
-    return posts;
-  } catch (error) {
-    console.error("Error fetching blog posts:", error);
-    return [];
-  }
+  return posts;
 }
 
 async function fetchOgImage(url: string): Promise<string | undefined> {
@@ -90,7 +110,7 @@ async function fetchOgImage(url: string): Promise<string | undefined> {
     const html = await response.text();
     const match = html.match(/<meta property="og:image" content="([^"]+)"/);
     return match ? match[1] : undefined;
-  } catch (error) {
+  } catch {
     return undefined;
   }
 }

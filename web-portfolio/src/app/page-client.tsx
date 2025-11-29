@@ -37,7 +37,11 @@ export default function HomePageClient({ blogSection }: { blogSection: React.Rea
         <div className="grid gap-6 md:grid-cols-2">
           <SkillSection category="learning" skills={getSkillsByCategory("learning")} />
           <SkillSection category="strong" skills={getSkillsByCategory("strong")} />
-          <SkillSection category="usable" skills={getSkillsByCategory("usable")} />
+          <SkillSection
+            category="usable"
+            skills={getSkillsByCategory("usable")}
+            className="md:col-span-2"
+          />
         </div>
       </section>
 
