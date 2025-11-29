@@ -13,15 +13,20 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 const storageKey = "maccrey-theme";
 
-const getInitialTheme = () => {
-  if (typeof window === "undefined") return "dark";
-  const stored = window.localStorage.getItem(storageKey) as Theme | null;
-  if (stored) return stored;
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-};
-
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>("dark");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem(storageKey) as Theme | null;
+    const preferred = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    const nextTheme = stored ?? preferred;
+    if (nextTheme !== theme) {
+      setTheme(nextTheme);
+    }
+    // We intentionally run once on mount to align server/client theme.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
