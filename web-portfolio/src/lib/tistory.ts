@@ -7,7 +7,11 @@ export interface BlogPost {
 }
 
 const RSS_URL = "https://code-lab.tistory.com/rss";
-const RSS_CORS_FALLBACK = "https://api.allorigins.win/raw?url=https%3A%2F%2Fcode-lab.tistory.com%2Frss";
+const RSS_FALLBACKS = [
+  "https://corsproxy.io/?https://code-lab.tistory.com/rss",
+  "https://api.allorigins.win/raw?url=https%3A%2F%2Fcode-lab.tistory.com%2Frss",
+  "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fcode-lab.tistory.com%2Frss",
+];
 
 export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]> {
   try {
@@ -30,6 +34,10 @@ export async function getLatestBlogPostsClient(limit: number = 4): Promise<BlogP
 }
 
 async function parseRssFeed(xml: string, options: { limit: number; fetchOgImages: boolean }): Promise<BlogPost[]> {
+  // rss2json returns JSON; detect early
+  const jsonPosts = tryParseJsonFeed(xml, options.limit);
+  if (jsonPosts) return jsonPosts;
+
   const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
 
   const posts: BlogPost[] = await Promise.all(
@@ -111,7 +119,7 @@ async function fetchRssText({
   revalidateSeconds?: number;
   allowFallback: boolean;
 }): Promise<string> {
-  const sources = [RSS_URL, ...(allowFallback ? [RSS_CORS_FALLBACK] : [])];
+  const sources = [RSS_URL, ...(allowFallback ? RSS_FALLBACKS : [])];
 
   let lastError: unknown;
 
@@ -127,9 +135,9 @@ async function fetchRssText({
         continue;
       }
 
-      const xml = await response.text();
-      if (xml.includes("<item")) {
-        return xml;
+      const body = await response.text();
+      if (body.includes("<item") || body.startsWith("{") || body.startsWith("{")) {
+        return body;
       }
     } catch (error) {
       lastError = error;
@@ -137,6 +145,41 @@ async function fetchRssText({
   }
 
   throw lastError instanceof Error ? lastError : new Error("Failed to fetch RSS feed");
+}
+
+function tryParseJsonFeed(payload: string, limit: number): BlogPost[] | null {
+  try {
+    const parsed = JSON.parse(payload) as { items?: Array<Record<string, unknown>> };
+    if (!parsed.items) return null;
+
+    return parsed.items.slice(0, limit).map((item) => {
+      const title = String(item.title || "No Title");
+      const link = String(item.link || "#");
+      const dateStr = String(item.pubDate || new Date().toISOString());
+      const description = decodeHTMLEntities(String(item.description || ""));
+      const imageUrl = typeof item.thumbnail === "string" ? item.thumbnail : undefined;
+
+      const summary =
+        description
+          .replace(/<[^>]+>/g, "")
+          .replace(/&nbsp;/g, " ")
+          .trim()
+          .slice(0, 100) + "...";
+
+      const dateObj = new Date(dateStr);
+      const formattedDate = `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, "0")}.${String(dateObj.getDate()).padStart(2, "0")}`;
+
+      return {
+        title,
+        link,
+        date: formattedDate,
+        summary,
+        imageUrl,
+      };
+    });
+  } catch {
+    return null;
+  }
 }
 
 function decodeHTMLEntities(text: string): string {
