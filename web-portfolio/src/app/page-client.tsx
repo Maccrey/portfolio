@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/hero";
 import { ProjectCard } from "@/components/projects/project-card";
 import { SkillSection } from "@/components/skills/skill-section";
@@ -8,14 +9,18 @@ import { featuredProjects } from "@/data/projects";
 import { getSkillsByCategory } from "@/data/skills";
 import { useLocale } from "@/providers/locale-provider";
 
-export default function HomePageClient({ blogSection }: { blogSection: React.ReactNode }) {
+const BlogSection = dynamic(() => import("@/components/home/blog-section").then((m) => m.BlogSection), {
+  ssr: false,
+});
+
+export default function HomePageClient() {
   const { dictionary } = useLocale();
 
   return (
     <div className="space-y-12">
       <Hero />
 
-      {blogSection}
+      <BlogSection initialPosts={[]} />
 
       <section className="space-y-6">
         <div className="flex items-center justify-between">
