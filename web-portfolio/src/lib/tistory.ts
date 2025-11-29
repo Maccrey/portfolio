@@ -11,6 +11,7 @@ const RSS_FALLBACKS = [
   "https://corsproxy.io/?https://code-lab.tistory.com/rss",
   "https://api.allorigins.win/raw?url=https%3A%2F%2Fcode-lab.tistory.com%2Frss",
   "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fcode-lab.tistory.com%2Frss",
+  "https://api.codetabs.com/v1/proxy?quest=https://code-lab.tistory.com/rss",
 ];
 
 export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]> {
@@ -26,7 +27,7 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
 export async function getLatestBlogPostsClient(limit: number = 4): Promise<BlogPost[]> {
   try {
     const xml = await fetchRssText({ cache: "no-store", allowFallback: true });
-    return parseRssFeed(xml, { limit, fetchOgImages: false });
+    return parseRssFeed(xml, { limit, fetchOgImages: true });
   } catch (error) {
     console.error("Error fetching blog posts on client:", error);
     return [];
@@ -100,8 +101,8 @@ async function parseRssFeed(xml: string, options: { limit: number; fetchOgImages
 
 async function fetchOgImage(url: string): Promise<string | undefined> {
   try {
-    const response = await fetch(url, { next: { revalidate: 3600 } });
-    if (!response.ok) return undefined;
+    const response = await fetchFromSources(buildOgSources(url), { next: { revalidate: 3600 } });
+    if (!response) return undefined;
     const html = await response.text();
     const match = html.match(/<meta property="og:image" content="([^"]+)"/);
     return match ? match[1] : undefined;
@@ -119,7 +120,10 @@ async function fetchRssText({
   revalidateSeconds?: number;
   allowFallback: boolean;
 }): Promise<string> {
-  const sources = [RSS_URL, ...(allowFallback ? RSS_FALLBACKS : [])];
+  const sources =
+    typeof window === "undefined"
+      ? [RSS_URL, ...(allowFallback ? RSS_FALLBACKS : [])]
+      : [...(allowFallback ? RSS_FALLBACKS : []), RSS_URL];
 
   let lastError: unknown;
 
@@ -127,6 +131,7 @@ async function fetchRssText({
     try {
       const response = await fetch(url, {
         cache,
+        mode: "cors",
         next: revalidateSeconds ? { revalidate: revalidateSeconds } : undefined,
       });
 
@@ -136,8 +141,9 @@ async function fetchRssText({
       }
 
       const body = await response.text();
-      if (body.includes("<item") || body.startsWith("{") || body.startsWith("{")) {
-        return body;
+      const trimmed = body.trim();
+      if (trimmed.includes("<item") || trimmed.startsWith("{")) {
+        return trimmed;
       }
     } catch (error) {
       lastError = error;
@@ -145,6 +151,40 @@ async function fetchRssText({
   }
 
   throw lastError instanceof Error ? lastError : new Error("Failed to fetch RSS feed");
+}
+
+async function fetchFromSources(urls: string[], init?: RequestInit): Promise<Response | null> {
+  let lastError: unknown;
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, { ...init, mode: "cors" });
+      if (!response.ok) {
+        lastError = new Error(`Failed request: ${response.status}`);
+        continue;
+      }
+      return response;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  if (lastError) {
+    throw lastError instanceof Error ? lastError : new Error("All fetch attempts failed");
+  }
+
+  return null;
+}
+
+function buildOgSources(url: string): string[] {
+  const encoded = encodeURIComponent(url);
+  const proxies = [
+    `https://corsproxy.io/?${url}`,
+    `https://api.allorigins.win/raw?url=${encoded}`,
+    `https://api.codetabs.com/v1/proxy?quest=${url}`,
+  ];
+
+  return typeof window === "undefined" ? [url, ...proxies] : proxies;
 }
 
 function tryParseJsonFeed(payload: string, limit: number): BlogPost[] | null {
