@@ -20,11 +20,10 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const stored = window.localStorage.getItem(storageKey) as Locale | null;
-    if (stored && locales.includes(stored) && stored !== locale) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (stored && locales.includes(stored)) {
       setLocale(stored);
     }
-  }, [locale]);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale;
