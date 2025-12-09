@@ -28,6 +28,70 @@ const defaultLocale: Locale = "ko";
 
 export const projects: Project[] = [
   {
+    slug: "crack-fortune",
+    stack: ["React", "Three.js", "Firebase", "Gemini API"],
+    timeline: "2025.12",
+    status: "live",
+    links: [
+      { label: "GitHub", href: "https://github.com/Maccrey/CrackFortune" },
+      { label: "Demo", href: "https://www.crackfortune.maccrey.com/" },
+    ],
+    translations: {
+      ko: {
+        name: "FortuneCrack",
+        summary: "3D 포춘 쿠키 깨기와 AI 점술가 상담을 결합한 인터랙티브 운세 플랫폼.",
+        problem: "기존 운세 서비스의 정적인 텍스트 결과는 사용자에게 깊은 몰입감이나 개인화된 상담 경험을 제공하지 못함.",
+        audience: "매일의 운세를 재미있게 확인하고, 고민을 가볍게 상담하고 싶은 Gen Z 사용자",
+        contribution: "React Three Fiber로 3D 쿠키 인터랙션 구현, Gemini API 기반 페르소나 챗봇 설계, 게스트-로그인 데이터 동기화 개발.",
+        impact: "3D 애니메이션과 대화형 AI로 기존 텍스트 운세 대비 몰입도 높은 사용자 경험 제공.",
+        highlights: [
+          "물리기반 3D 포춘 쿠키 깨기 인터랙션 (R3F)",
+          "Gemini Pro 기반의 '신비로운 점술가' 페르소나 챗봇",
+          "게스트 모드에서 로그인 전환 시 데이터 자동 마이그레이션",
+        ],
+      },
+      en: {
+        name: "FortuneCrack",
+        summary: "An interactive fortune-telling platform combining 3D fortune cookie breaking with AI-powered counseling.",
+        problem: "Traditional fortune services offer static text that lacks immersion and personalized guidance.",
+        audience: "Gen Z users seeking fun daily insights and lighthearted counseling",
+        contribution: "Implemented 3D interactions using React Three Fiber, designed Gemini API-based persona chatbots, and built guest-to-login data sync.",
+        impact: "Delivers a highly immersive experience with 3D animation and conversational AI, surpassing static text formats.",
+        highlights: [
+          "Physics-based 3D fortune cookie interaction (R3F)",
+          "Mystic Fortune Teller persona chatbot powered by Gemini Pro",
+          "Automatic data migration from guest mode to authenticated account",
+        ],
+      },
+      ja: {
+        name: "FortuneCrack",
+        summary: "3DフォーチュンクッキーとAI占い師への相談を組み合わせたインタラクティブな運勢プラットフォーム。",
+        problem: "既存の運勢サービスは静的なテキストのみで、没入感や個人的な相談体験が不足していた。",
+        audience: "毎日の運勢を楽しみ、軽い悩みを相談したいGen Z世代",
+        contribution: "React Three Fiberによる3Dクッキー演出の実装、Gemini APIを用いたペルソナチャットボットの設計、ゲストからログインへのデータ同期開発。",
+        impact: "3Dアニメーションと対話型AIにより、従来のテキスト運勢と比較して高い没入感を提供。",
+        highlights: [
+          "物理ベースの3Dフォーチュンクッキー割り（R3F）",
+          "Gemini Proを活用した「神秘的な占い師」ペルソナチャット",
+          "ゲストモードからログインへのシームレスなデータ移行",
+        ],
+      },
+      zh: {
+        name: "FortuneCrack",
+        summary: "結合 3D 幸運餅乾與 AI 占卜師諮詢的互動式運勢平台。",
+        problem: "傳統運勢服務僅提供靜態文字，缺乏沉浸感與個人化的諮詢體驗。",
+        audience: "尋求每日運勢樂趣與輕量諮詢的 Gen Z 用戶",
+        contribution: "使用 React Three Fiber 實作 3D 餅乾互動，設計基於 Gemini API 的角色聊天機器人，並開發訪客至登入的資料同步。",
+        impact: "透過 3D 動畫與對話式 AI，提供超越傳統靜態文字的高度沉浸體驗。",
+        highlights: [
+          "基於物理的 3D 幸運餅乾互動 (R3F)",
+          "由 Gemini Pro 驅動的「神秘占卜師」角色聊天",
+          "支援訪客模式自動同步資料至登入帳號",
+        ],
+      },
+    },
+  },
+  {
     slug: "personal-play",
     stack: ["Next.js", "Firebase", "GitHub Pages", "TailwindCSS"],
     timeline: "2024.01 - Present",
