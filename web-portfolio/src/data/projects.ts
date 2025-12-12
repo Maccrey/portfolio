@@ -28,6 +28,70 @@ const defaultLocale: Locale = "ko";
 
 export const projects: Project[] = [
   {
+    slug: "loglingo",
+    stack: ["Next.js 15", "TypeScript", "TailwindCSS", "Firebase", "Grok API"],
+    timeline: "2025.12",
+    status: "live",
+    links: [
+      { label: "GitHub", href: "https://github.com/Maccrey/loglingo" },
+      { label: "Demo", href: "https://www.loglingo.com" },
+    ],
+    translations: {
+      ko: {
+        name: "Loglingo",
+        summary: "Grok 4.1 기반의 다국어 AI 일기장 및 학습 아카이브.",
+        problem: "외국어 일기를 쓸 때 즉각적인 교정을 받기 어렵고, 배운 내용을 체계적으로 복습하기 힘듦.",
+        audience: "작문 실력을 늘리고 싶은 외국어 학습자",
+        contribution: "Next.js 15 App Router와 Grok API를 연동하여 실시간 교정 및 퀴즈 생성 시스템 구축.",
+        impact: "매일 일기를 쓰며 자연스럽게 문법을 교정받고, 자동 생성된 퀴즈로 학습 효과 극대화.",
+        highlights: [
+          "14개 언어 지원 및 글라스모피즘 UI 적용",
+          "Grok AI 기반 문장 교정 및 '뿌리 의미' 분석",
+          "개인화 학습 아카이브와 4지선다 퀴즈 자동 생성",
+        ],
+      },
+      en: {
+        name: "Loglingo",
+        summary: "Multilingual AI diary and learning archive powered by Grok 4.1.",
+        problem: "Hard to get instant feedback on foreign language journals and organize learned concepts for review.",
+        audience: "Language learners aspiring to improve writing skills",
+        contribution: "Built real-time correction and quiz generation using Next.js 15 App Router and Grok API.",
+        impact: "Maximized learning through daily writing with instant AI corrections and auto-generated quizzes.",
+        highlights: [
+          "Supports 14 languages with Glassmorphism UI",
+          "Instant correction & 'Root Meaning' analysis via Grok AI",
+          "Personalized learning archive & auto-generated quizzes",
+        ],
+      },
+      ja: {
+        name: "Loglingo",
+        summary: "Grok 4.1を活用した多言語AI日記＆学習アーカイブ。",
+        problem: "外国語の日記へのフィードバック即時性不足と、学習内容の体系的な復習の難しさ。",
+        audience: "ライティングスキルを向上させたい語学学習者",
+        contribution: "Next.js 15 App RouterとGrok APIを連携させ、リアルタイム添削およびクイズ生成システムを構築。",
+        impact: "毎日の日記作成とAIによる即時添削、自動生成クイズにより学習効果を最大化。",
+        highlights: [
+          "14言語対応＆グラスモーフィズムUI",
+          "Grok AIによる即時添削と「根本的な意味」の分析",
+          "パーソナライズされた学習アーカイブと4択クイズの自動生成",
+        ],
+      },
+      zh: {
+        name: "Loglingo",
+        summary: "基於 Grok 4.1 的多語言 AI 日記與學習檔案庫。",
+        problem: "難以獲得外語日記的即時反饋，且難以系統化複習所學內容。",
+        audience: "想提升寫作能力的語言學習者",
+        contribution: "結合 Next.js 15 App Router 與 Grok API，建構即時批改與測驗生成系統。",
+        impact: "透過每日寫作獲得即時 AI 批改，並隨自動生成測驗最大化學習成效。",
+        highlights: [
+          "支援 14 種語言與玻璃擬態 UI",
+          "Grok AI 即時批改與「根本含義」分析",
+          "個人化學習檔案庫與自動生成四選一測驗",
+        ],
+      },
+    },
+  },
+  {
     slug: "crack-fortune",
     stack: ["React", "Three.js", "Firebase", "Gemini API"],
     timeline: "2025.12",
