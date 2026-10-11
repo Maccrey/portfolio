@@ -14,7 +14,7 @@ test.describe("Maccrey portfolio", () => {
 
     const nav = page.getByRole("navigation");
     await expect(nav.getByRole("link", { name: "Projects" })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "Skills" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "기술" })).toBeVisible();
   });
 
   test("Projects/Contact 페이지에서 핵심 섹션을 확인할 수 있다", async ({ page }) => {
