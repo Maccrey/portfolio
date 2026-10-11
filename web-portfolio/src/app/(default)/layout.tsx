@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { AppProviders } from "@/providers";
+import { SiteShell } from "@/components/layout/site-shell";
 import { AnalyticsScript } from "@/components/analytics/analytics-script";
-import "./globals.css";
+import "../globals.css";
 
 const siteUrl = "https://portfolio.maccrey.com";
 
@@ -38,11 +36,7 @@ export default function RootLayout({
         <div className="blob blob-1" />
         <div className="blob blob-2" />
         <AnalyticsScript />
-        <AppProviders>
-          <Header />
-          <main className="mx-auto mt-10 max-w-6xl px-6 relative z-10">{children}</main>
-          <Footer />
-        </AppProviders>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { TISTORY_CATEGORY, type BlogPost } from "@/lib/tistory";
 import { getLatestBlogPostsClient } from "@/lib/tistory";
 import { BlogCard } from "./blog-card";
+import { useLocale } from "@/providers/locale-provider";
 
 export function BlogSection({ initialPosts, limit = 4 }: { initialPosts: BlogPost[]; limit?: number }) {
+  const { dictionary } = useLocale();
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -36,15 +38,15 @@ export function BlogSection({ initialPosts, limit = 4 }: { initialPosts: BlogPos
       <div className="mb-10 flex items-end justify-between px-4">
         <div>
           <h2 className="text-3xl font-bold text-[var(--text-primary)] md:text-4xl">
-            개발 기록 <span className="text-gradient">& 고민</span>
+            {dictionary.blog.title} <span className="text-gradient">{dictionary.blog.accent}</span>
           </h2>
           <p className="mt-2 text-[var(--text-secondary)]">
-            {TISTORY_CATEGORY} 카테고리에서 진행 중인 개발과 문제 해결 기록을 소개합니다.
+            {TISTORY_CATEGORY} — {dictionary.blog.description} {dictionary.blog.sourceLanguage}
           </p>
         </div>
         <div className="hidden items-center gap-3 md:flex">
           {refreshing && (
-            <span className="text-xs text-[var(--text-muted)]">Updating…</span>
+            <span className="text-xs text-[var(--text-muted)]">{dictionary.blog.updating}</span>
           )}
           <a
             href="https://code-lab.tistory.com/category/50%20year%20old%20flutter%20developer%20challenge"
@@ -52,7 +54,7 @@ export function BlogSection({ initialPosts, limit = 4 }: { initialPosts: BlogPos
             rel="noopener noreferrer"
             className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
           >
-            티스토리에서 전체 글 보기 →
+            {dictionary.blog.allPosts} →
           </a>
         </div>
       </div>
@@ -65,7 +67,7 @@ export function BlogSection({ initialPosts, limit = 4 }: { initialPosts: BlogPos
         </div>
       ) : (
         <div className="rounded-2xl border border-dashed border-[var(--border-subtle)] bg-[var(--surface-muted)] p-8 text-center text-[var(--text-muted)]">
-          글을 불러오지 못했습니다. 티스토리에서 기록을 확인해주세요.
+          {dictionary.blog.loadError}
         </div>
       )}
       
@@ -76,7 +78,7 @@ export function BlogSection({ initialPosts, limit = 4 }: { initialPosts: BlogPos
           rel="noopener noreferrer"
           className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
         >
-          티스토리에서 전체 글 보기 →
+          {dictionary.blog.allPosts} →
         </a>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { featuredProjects, getProjectCopy } from "@/data/projects";
 import { useLocale } from "@/providers/locale-provider";
+import { localizedPath } from "@/lib/localized-route";
 
 export function Hero() {
   const { dictionary, locale } = useLocale();
@@ -19,11 +20,11 @@ export function Hero() {
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-[var(--text-secondary)] md:text-xl">{dictionary.hero.subtitle}</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/projects" className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-6 py-3.5 text-sm font-bold text-[var(--text-inverse)] transition hover:opacity-85">{dictionary.hero.cta} →</Link>
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] px-6 py-3.5 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--glass-highlight)]">채용·개발 의뢰 문의</Link>
+            <Link href={localizedPath(locale, "/projects")} className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-6 py-3.5 text-sm font-bold text-[var(--text-inverse)] transition hover:opacity-85">{dictionary.hero.cta} →</Link>
+            <Link href={localizedPath(locale, "/contact")} className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] px-6 py-3.5 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--glass-highlight)]">{dictionary.homePage.contactCta}</Link>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-[var(--glass-border)] pt-5 text-sm text-[var(--text-muted)]">
-            <span>Flutter · Firebase</span><span>Web · AI 제품</span><span>기획 · 개발 · 출시</span>
+            {dictionary.hero.focusPoints.map((point) => <span key={point}>{point}</span>)}
           </div>
         </div>
         <div className="hidden flex-1 flex-col gap-4 lg:flex">

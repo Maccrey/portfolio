@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/tistory";
 import { getAssetPath } from "@/lib/utils";
+import { useLocale } from "@/providers/locale-provider";
 
 export function BlogCard({ post }: { post: BlogPost }) {
+  const { dictionary } = useLocale();
   return (
     <Link
       href={post.link}
@@ -39,7 +41,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
         </p>
         
         <div className="mt-auto pt-4 text-sm font-medium text-accent-primary group-hover:text-accent-secondary transition-colors flex items-center gap-1">
-          Read more
+          {dictionary.blog.readMore}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

@@ -1,7 +1,7 @@
 import { describe, expect, it, beforeEach, afterEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import HomePage from "@/app/page";
+import HomePage from "@/app/(default)/page";
 import { AppProviders } from "@/providers";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";

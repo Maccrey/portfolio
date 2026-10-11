@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import HomePage from "@/app/page";
+import HomePage from "@/app/(default)/page";
 import { dictionaries } from "@/i18n/locales";
 import { describe, expect, it, vi } from "vitest";
 

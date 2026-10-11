@@ -7,25 +7,27 @@ import { useLocale } from "@/providers/locale-provider";
 import { LocaleSwitcher } from "./locale-switcher";
 import { ThemeToggle } from "./theme-toggle";
 import { MobileMenu } from "./mobile-menu";
+import { localizedPath } from "@/lib/localized-route";
 
 export function Header() {
   const pathname = usePathname();
-  const { dictionary } = useLocale();
+  const { dictionary, locale } = useLocale();
 
   return (
     <header className="sticky top-0 z-40 glass-nav">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-[var(--text-primary)] hover:text-gradient transition-colors">
+        <Link href={localizedPath(locale, "/")} className="text-lg font-semibold tracking-tight text-[var(--text-primary)] hover:text-gradient transition-colors">
           Maccrey
         </Link>
         <nav className="hidden gap-6 text-sm text-[var(--text-secondary)] md:flex">
           {navigation.map((item) => {
             const key = item.labelKey.split(".")[1] as keyof typeof dictionary.nav;
-            const isActive = pathname === item.href;
+            const href = localizedPath(locale, item.href);
+            const isActive = pathname === href;
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={href}
                 className={`transition hover:text-[var(--text-primary)] ${
                   isActive ? "text-[var(--text-primary)] font-medium" : "text-[var(--text-secondary)]"
                 }`}

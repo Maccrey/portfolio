@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SkillsPage from "@/app/skills/page";
+import SkillsPage from "@/app/(default)/skills/page";
 import { dictionaries } from "@/i18n/locales";
 import { describe, expect, it, vi } from "vitest";
 

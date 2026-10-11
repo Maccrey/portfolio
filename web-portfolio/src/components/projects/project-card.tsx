@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { getProjectCopy } from "@/data/projects";
 import { useLocale } from "@/providers/locale-provider";
+import { localizedPath } from "@/lib/localized-route";
 
 export function ProjectCard({ project }: { project: Project }) {
   const { locale, dictionary } = useLocale();
@@ -31,7 +32,7 @@ export function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
       <Link
-        href={`/projects/${project.slug}`}
+        href={localizedPath(locale, `/projects/${project.slug}`)}
         className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-accent-primary hover:text-accent-secondary transition-colors"
       >
         {dictionary.projectCard.detailCta} →

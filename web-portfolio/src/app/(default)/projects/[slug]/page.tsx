@@ -26,7 +26,15 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     keywords: slug === "kinora"
       ? ["KINORA", "AI 돌봄", "가족 돌봄 앱", "Flutter", "Firebase", "대화형 AI", "어르신 돌봄"]
       : [copy.name, "Maccrey 프로젝트", "Flutter 개발", "웹 제품 개발"],
-    alternates: { canonical: `/projects/${slug}` },
+    alternates: {
+      canonical: `/projects/${slug}`,
+      languages: {
+        ko: `/projects/${slug}`,
+        en: `/en/projects/${slug}`,
+        ja: `/ja/projects/${slug}`,
+        zh: `/zh/projects/${slug}`,
+      },
+    },
     openGraph: {
       title: `${copy.name} | Maccrey Portfolio`,
       description: copy.summary,

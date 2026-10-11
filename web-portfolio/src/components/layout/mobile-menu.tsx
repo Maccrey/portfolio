@@ -5,11 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navigation } from "@/data/site";
 import { useLocale } from "@/providers/locale-provider";
+import { localizedPath } from "@/lib/localized-route";
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const { dictionary } = useLocale();
+  const { dictionary, locale } = useLocale();
 
   // Prevent scrolling when menu is open
   useEffect(() => {
@@ -29,7 +30,7 @@ export function MobileMenu() {
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="relative z-50 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--glass-surface)] text-[var(--text-primary)] transition hover:bg-[var(--glass-highlight)]"
-        aria-label="Toggle menu"
+        aria-label={dictionary.common.menuToggle}
         aria-expanded={isOpen}
       >
         <div className="relative h-4 w-5">
@@ -68,11 +69,12 @@ export function MobileMenu() {
         <nav className="mt-20 flex flex-col gap-6">
           {navigation.map((item) => {
             const key = item.labelKey.split(".")[1] as keyof typeof dictionary.nav;
-            const isActive = pathname === item.href;
+            const href = localizedPath(locale, item.href);
+            const isActive = pathname === href;
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={href}
                 onClick={() => setIsOpen(false)}
                 className={`text-lg transition hover:text-[var(--text-primary)] ${
                   isActive
