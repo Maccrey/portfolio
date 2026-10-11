@@ -1,20 +1,22 @@
 "use client";
 
 import { useTheme } from "@/providers/theme-provider";
+import { useLocale } from "@/providers/locale-provider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const { dictionary } = useLocale();
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label="Toggle theme"
+      aria-label={dictionary.common.themeToggle}
       className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
         theme === "dark" ? "bg-slate-700" : "bg-[var(--glass-surface)] border border-[var(--glass-border)]"
       }`}
     >
-      <span className="sr-only">Toggle theme</span>
+      <span className="sr-only">{dictionary.common.themeToggle}</span>
       <span
         className={`${
           theme === "dark"

@@ -161,7 +161,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       inDevelopment: "출시 준비 중", launchTitle: "KINORA의 출시 소식을 가장 먼저 받아보세요", launchDescription: "제품 소개와 출시 알림 등록은 KINORA 공식 페이지에서 확인할 수 있습니다.", launchCta: "KINORA 출시 알림 등록",
       recentLaunchLabel: "최근 출시 · 2026", recentLaunchTitle: "maccrey.com — 모두의 박물관", recentLaunchDescription: "3D 마을을 걸으며 블록체인, 금융, 성수 등 여러 주제의 디지털 박물관을 둘러보는 공개 웹 프로젝트입니다. 지식 콘텐츠를 전시처럼 발견하고 탐험하는 경험으로 바꾸는 데 집중했습니다.", recentLaunchCta: "박물관 둘러보기", projectsCta: "프로젝트 사례 보기", contactCta: "채용·개발 의뢰 문의",
     },
-    writingPage: { badge: "BUILD LOG · TISTORY", title: "개발 과정과 문제 해결 기록", description: "완성된 결과뿐 아니라 만들면서 마주친 질문, 선택의 이유, 시행착오와 배운 점을 씁니다. 아래 글은 지정한 개발 도전기 카테고리만 가져옵니다." },
+    writingPage: { badge: "개발 기록 · TISTORY", title: "개발 과정과 문제 해결 기록", description: "완성된 결과뿐 아니라 만들면서 마주친 질문, 선택의 이유, 시행착오와 배운 점을 씁니다. 아래 글은 지정한 개발 도전기 카테고리만 가져옵니다." },
     blog: { title: "개발 기록", accent: "& 고민", description: "카테고리에서 진행 중인 개발과 문제 해결 기록을 소개합니다.", updating: "새 글 확인 중…", allPosts: "티스토리에서 전체 글 보기", loadError: "글을 불러오지 못했습니다. 티스토리에서 기록을 확인해주세요.", readMore: "자세히 읽기", sourceLanguage: "블로그 원문은 한국어로 작성되었습니다." },
     common: { menuToggle: "메뉴 열기", themeToggle: "테마 전환" },
     hero: {
@@ -187,17 +187,17 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     },
     pages: {
       projects: {
-        badge: "Projects",
+        badge: "프로젝트",
         description: "프로젝트마다 문제 정의, 대상 사용자, 기여도를 명확히 정리했습니다.",
       },
       skills: {
-        badge: "Skills",
+        badge: "기술 역량",
         description: "배우는 기술, 강점 기술, 즉시 투입 가능한 기술을 구분해 성장 방향을 설명합니다.",
       },
       contact: {
-        badge: "Contact",
+        badge: "문의",
       },
-      about: { badge: "ABOUT MACCREY", title: "문제를 발견하고 끝까지 제품으로 만드는 개발자", description: "50세에 개발을 시작한 뒤 아이디어를 실제 사용 가능한 서비스로 연결해왔습니다. 기획부터 구현, 출시, 운영 중의 개선까지 직접 경험하며 배운 점을 기록합니다." },
+      about: { badge: "개발자 소개", title: "문제를 발견하고 끝까지 제품으로 만드는 개발자", description: "50세에 개발을 시작한 뒤 아이디어를 실제 사용 가능한 서비스로 연결해왔습니다. 기획부터 구현, 출시, 운영 중의 개선까지 직접 경험하며 배운 점을 기록합니다." },
     },
     contact: {
       description: "정규직 채용, Flutter·웹 제품 개발 의뢰, 기술 협업을 환영합니다. 문제와 목표를 간단히 알려주시면 함께 범위와 다음 단계를 이야기하겠습니다.",
@@ -267,7 +267,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       inDevelopment: "In development", launchTitle: "Get KINORA launch updates first", launchDescription: "Visit the official KINORA page to learn about the product and sign up for launch updates.", launchCta: "Get KINORA launch updates",
       recentLaunchLabel: "RECENT LAUNCH · 2026", recentLaunchTitle: "maccrey.com — Museum for Everyone", recentLaunchDescription: "A public web project where visitors walk through a 3D village and explore digital museums about blockchain, finance, Seongsu, and more. It turns learning into an exhibit visitors can discover and explore.", recentLaunchCta: "Explore the museum", projectsCta: "Explore project case studies", contactCta: "Discuss hiring or product work",
     },
-    writingPage: { badge: "BUILD LOG · TISTORY", title: "Development notes and problem solving", description: "I share the questions, trade-offs, failed attempts, and lessons behind the finished products. Posts below are limited to the selected developer challenge category." },
+    writingPage: { badge: "DEVELOPMENT LOG · TISTORY", title: "Development notes and problem solving", description: "I share the questions, trade-offs, failed attempts, and lessons behind the finished products. Posts below are limited to the selected developer challenge category." },
     blog: { title: "Development notes", accent: "& challenges", description: "Build notes and problem-solving stories from this category.", updating: "Checking for new posts…", allPosts: "View all posts on Tistory", loadError: "Posts could not be loaded. You can read the archive on Tistory.", readMore: "Read more", sourceLanguage: "Original blog posts are written in Korean." },
     common: { menuToggle: "Open menu", themeToggle: "Toggle theme" },
     hero: {
@@ -303,7 +303,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       contact: {
         badge: "Contact",
       },
-      about: { badge: "ABOUT MACCREY", title: "A developer who takes problems from idea to product", description: "Since starting to code at 50, I have turned ideas into usable services and learned through planning, implementation, launch, and iteration." },
+      about: { badge: "About Maccrey", title: "A developer who takes problems from idea to product", description: "Since starting to code at 50, I have turned ideas into usable services and learned through planning, implementation, launch, and iteration." },
     },
     contact: {
       description: "Open to full-time roles, Flutter and web product engagements, and technical partnerships. Share the problem and goal, and we can discuss scope and next steps.",
@@ -373,7 +373,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       inDevelopment: "開発中", launchTitle: "KINORAのリリース情報をいち早く受け取る", launchDescription: "サービスの詳細とリリース通知の登録はKINORA公式ページをご覧ください。", launchCta: "KINORAのリリース通知に登録",
       recentLaunchLabel: "最近公開 · 2026", recentLaunchTitle: "maccrey.com — みんなの博物館", recentLaunchDescription: "3Dの街を歩き、ブロックチェーン、金融、聖水などのデジタル博物館を巡る公開Webプロジェクトです。知識を展示のように発見し、探索できる体験を目指しました。", recentLaunchCta: "博物館を見る", projectsCta: "プロジェクト事例を見る", contactCta: "採用・開発の相談をする",
     },
-    writingPage: { badge: "BUILD LOG · TISTORY", title: "開発の過程と問題解決の記録", description: "完成した成果だけでなく、開発中に直面した疑問、選択の理由、試行錯誤や学びを記録しています。表示する記事は指定した開発チャレンジカテゴリに限定しています。" },
+    writingPage: { badge: "開発記録 · TISTORY", title: "開発の過程と問題解決の記録", description: "完成した成果だけでなく、開発中に直面した疑問、選択の理由、試行錯誤や学びを記録しています。表示する記事は指定した開発チャレンジカテゴリに限定しています。" },
     blog: { title: "開発記録", accent: "と課題", description: "このカテゴリから開発の進捗と問題解決の記録を紹介します。", updating: "新しい記事を確認中…", allPosts: "Tistoryですべての記事を見る", loadError: "記事を読み込めませんでした。Tistoryの記録をご確認ください。", readMore: "続きを読む", sourceLanguage: "ブログ記事の原文は韓国語です。" },
     common: { menuToggle: "メニューを開く", themeToggle: "テーマを切り替え" },
     hero: {
@@ -399,17 +399,17 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     },
     pages: {
       projects: {
-        badge: "Projects",
+        badge: "プロジェクト",
         description: "各プロジェクトの課題・対象・貢献内容を明確に整理しています。",
       },
       skills: {
-        badge: "Skills",
+        badge: "スキル",
         description: "学習中・強み・即投入可能なスキルを分けて成長の方向性を示します。",
       },
       contact: {
-        badge: "Contact",
+        badge: "連絡先",
       },
-      about: { badge: "ABOUT MACCREY", title: "課題を見つけ、製品として最後まで形にする開発者", description: "50歳で開発を始めて以来、アイデアを実際に使えるサービスへつなげてきました。企画から実装、公開、改善までの経験を記録しています。" },
+      about: { badge: "開発者紹介", title: "課題を見つけ、製品として最後まで形にする開発者", description: "50歳で開発を始めて以来、アイデアを実際に使えるサービスへつなげてきました。企画から実装、公開、改善までの経験を記録しています。" },
     },
     contact: {
       description: "メールまたはGitHubでお気軽にご連絡ください。",
@@ -479,7 +479,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       inDevelopment: "開發中", launchTitle: "搶先接收 KINORA 上線消息", launchDescription: "產品介紹與上線通知登記請前往 KINORA 官方網站。", launchCta: "登記 KINORA 上線通知",
       recentLaunchLabel: "近期上線 · 2026", recentLaunchTitle: "maccrey.com — 大家的博物館", recentLaunchDescription: "一個公開網頁專案，讓訪客漫步 3D 城鎮，探索區塊鏈、金融、聖水等主題的數位博物館，將知識內容變成可探索的展覽體驗。", recentLaunchCta: "探索博物館", projectsCta: "查看專案案例", contactCta: "洽談聘用或開發合作",
     },
-    writingPage: { badge: "BUILD LOG · TISTORY", title: "開發過程與問題解決紀錄", description: "除了完成成果，也記錄開發時遇到的問題、選擇理由、嘗試與學習。以下文章只顯示指定的開發挑戰分類。" },
+    writingPage: { badge: "開發紀錄 · TISTORY", title: "開發過程與問題解決紀錄", description: "除了完成成果，也記錄開發時遇到的問題、選擇理由、嘗試與學習。以下文章只顯示指定的開發挑戰分類。" },
     blog: { title: "開發紀錄", accent: "與挑戰", description: "從此分類分享開發進度與問題解決過程。", updating: "正在檢查新文章…", allPosts: "在 Tistory 查看所有文章", loadError: "無法載入文章，請前往 Tistory 查看紀錄。", readMore: "閱讀更多", sourceLanguage: "部落格原文以韓文撰寫。" },
     common: { menuToggle: "開啟選單", themeToggle: "切換主題" },
     hero: {
@@ -505,17 +505,17 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
     },
     pages: {
       projects: {
-        badge: "Projects",
+        badge: "專案",
         description: "每個專案都清楚說明問題、使用者與貢獻內容。",
       },
       skills: {
-        badge: "Skills",
+        badge: "技能",
         description: "區分學習中、核心、可立即投入的技能，展現成長方向。",
       },
       contact: {
-        badge: "Contact",
+        badge: "聯絡",
       },
-      about: { badge: "ABOUT MACCREY", title: "從發現問題到完成產品的開發者", description: "50歲開始寫程式以來，我持續將想法轉化為可實際使用的服務，並記錄規劃、開發、上線與改進的經驗。" },
+      about: { badge: "關於 Maccrey", title: "從發現問題到完成產品的開發者", description: "50歲開始寫程式以來，我持續將想法轉化為可實際使用的服務，並記錄規劃、開發、上線與改進的經驗。" },
     },
     contact: {
       description: "歡迎透過 Email 或 GitHub 與我合作。",

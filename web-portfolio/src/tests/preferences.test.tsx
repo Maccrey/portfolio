@@ -49,7 +49,7 @@ describe("Theme & locale interactions", () => {
     );
 
     const html = document.documentElement;
-    const button = screen.getByRole("button", { name: "Toggle theme" });
+    const button = screen.getByRole("button", { name: "테마 전환" });
     const initial = html.getAttribute("data-theme");
 
     await userEvent.click(button);
