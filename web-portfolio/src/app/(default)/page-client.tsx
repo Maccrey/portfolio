@@ -33,7 +33,7 @@ export default function HomePageClient() {
         <div className="grid gap-5 md:grid-cols-2">
           {[
             { slug: "maccrey-museum", url: "https://maccrey.com" },
-            { slug: "kinora", url: "https://kinora.date" },
+            { slug: "kinora", url: "https://www.kinora.date" },
             { slug: "loglingo", url: "https://www.loglingo.com" },
           ].map(({ slug, url }) => {
             const project = featuredProjects.find((item) => item.slug === slug);

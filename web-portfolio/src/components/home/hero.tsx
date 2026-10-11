@@ -34,7 +34,7 @@ export function Hero() {
               const copy = getProjectCopy(project, locale);
               const directUrl = {
                 "maccrey-museum": "https://maccrey.com",
-                kinora: "https://kinora.date",
+                kinora: "https://www.kinora.date",
                 loglingo: "https://www.loglingo.com",
               }[project.slug];
               if (!directUrl) return null;

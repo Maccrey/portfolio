@@ -32,7 +32,7 @@ describe("HomePage", () => {
     expect(screen.getAllByRole("link", { name: "KINORA: 서비스 바로가기" }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("link", { name: "Loglingo: 서비스 바로가기" }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole("link", { name: "모두의 박물관: 서비스 바로가기" })[0]).toHaveAttribute("href", "https://maccrey.com");
-    expect(screen.getAllByRole("link", { name: "KINORA: 서비스 바로가기" })[0]).toHaveAttribute("href", "https://kinora.date");
+    expect(screen.getAllByRole("link", { name: "KINORA: 서비스 바로가기" })[0]).toHaveAttribute("href", "https://www.kinora.date");
     expect(screen.getAllByRole("link", { name: "Loglingo: 서비스 바로가기" })[0]).toHaveAttribute("href", "https://www.loglingo.com");
   });
 });
