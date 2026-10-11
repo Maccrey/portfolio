@@ -16,6 +16,6 @@ export function getUnlocalizedPath(pathname: string): string {
 
 export function localizedPath(locale: Locale, pathname: string): string {
   const path = getUnlocalizedPath(pathname);
-  if (locale === "ko") return path;
-  return path === "/" ? `/${locale}` : `/${locale}${path}`;
+  const localized = locale === "ko" ? path : path === "/" ? `/${locale}` : `/${locale}${path}`;
+  return localized === "/" ? localized : `${localized}/`;
 }

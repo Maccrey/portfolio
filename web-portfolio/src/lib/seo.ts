@@ -23,22 +23,27 @@ export function createPageMetadata({
   keywords?: string[];
   locale?: Locale;
 }): Metadata {
-  const languagePath = getUnlocalizedPath(path);
+  const normalizePath = (value: string) => {
+    if (value === "/") return value;
+    return `/${value.split("/").filter(Boolean).join("/")}/`;
+  };
+  const normalizedPath = normalizePath(path);
+  const languagePath = getUnlocalizedPath(normalizedPath);
   const languages = Object.fromEntries(
     locales.map((code) => [
       code,
-      code === "ko" ? languagePath : languagePath === "/" ? `/${code}` : `/${code}${languagePath}`,
+      normalizePath(code === "ko" ? languagePath : languagePath === "/" ? `/${code}` : `/${code}${languagePath}`),
     ]),
   );
   return {
     title,
     description,
     keywords,
-    alternates: { canonical: path, languages },
+    alternates: { canonical: normalizedPath, languages },
     openGraph: {
       title,
       description,
-      url: path,
+      url: normalizedPath,
       siteName: "Maccrey Portfolio",
       locale: localeToOpenGraph[locale],
       type: "website",
