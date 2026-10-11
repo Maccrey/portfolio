@@ -5,7 +5,7 @@ const enHeroTitle = "Maccrey turns ideas into products people can use";
 test.describe("환경 설정 UI", () => {
   test("테마 토글이 data-theme 값을 전환한다", async ({ page }) => {
     await page.goto("/");
-    const themeButton = page.getByRole("button", { name: "Toggle theme" });
+    const themeButton = page.getByRole("button", { name: "테마 전환" });
     const html = page.locator("html").first();
     const initial = await html.getAttribute("data-theme");
 
