@@ -113,6 +113,7 @@ export type CopyDictionary = {
       inDevelopment: string;
     };
     detailCta: string;
+    visitCta: string;
   };
   projectDetail: {
     labels: {
@@ -221,6 +222,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
         inDevelopment: "개발 중",
       },
       detailCta: "자세히 보기",
+      visitCta: "서비스 바로가기",
     },
     projectDetail: {
       labels: {
@@ -327,6 +329,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
         inDevelopment: "In development",
       },
       detailCta: "View details",
+      visitCta: "Visit product",
     },
     projectDetail: {
       labels: {
@@ -433,6 +436,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
         inDevelopment: "開発中",
       },
       detailCta: "詳しく見る",
+      visitCta: "サービスを見る",
     },
     projectDetail: {
       labels: {
@@ -539,6 +543,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
         inDevelopment: "開發中",
       },
       detailCta: "查看更多",
+      visitCta: "前往服務",
     },
     projectDetail: {
       labels: {

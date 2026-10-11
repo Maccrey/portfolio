@@ -31,11 +31,14 @@ export default function HomePageClient() {
           <Link href={localizedPath(locale, "/projects")} className="text-sm font-semibold text-[var(--accent-primary)]">{home.allProjects} →</Link>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          {featuredProjects
-            .filter((project) => ["maccrey-museum", "kinora", "study-duck", "braille-dashboard"].includes(project.slug))
-            .map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-            ))}
+          {[
+            { slug: "maccrey-museum", url: "https://maccrey.com" },
+            { slug: "kinora", url: "https://kinora.date" },
+            { slug: "loglingo", url: "https://www.loglingo.com" },
+          ].map(({ slug, url }) => {
+            const project = featuredProjects.find((item) => item.slug === slug);
+            return project ? <ProjectCard key={slug} project={project} directUrl={url} /> : null;
+          })}
         </div>
       </section>
       <section className="glass-panel flex flex-col justify-between gap-6 rounded-3xl p-8 md:flex-row md:items-center md:p-10">
