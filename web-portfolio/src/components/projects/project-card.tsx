@@ -16,7 +16,9 @@ export function ProjectCard({ project }: { project: Project }) {
         <span className="glass rounded-full px-3 py-1 text-xs uppercase tracking-wide text-[var(--text-secondary)]">
           {project.status === "live"
             ? dictionary.projectCard.status.live
-            : dictionary.projectCard.status.prototype}
+            : project.status === "in-development"
+              ? dictionary.projectCard.status.inDevelopment
+              : dictionary.projectCard.status.prototype}
         </span>
       </div>
       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{copy.summary}</p>

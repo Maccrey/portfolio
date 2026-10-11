@@ -63,7 +63,7 @@ describe("Theme & locale interactions", () => {
     await userEvent.click(screen.getByRole("button", { name: "EN" }));
 
     expect(
-      screen.getByRole("heading", { name: "Maccrey builds what does not exist yet" }),
+      screen.getByRole("heading", { name: "Maccrey turns ideas into products people can use" }),
     ).toBeInTheDocument();
   });
 });

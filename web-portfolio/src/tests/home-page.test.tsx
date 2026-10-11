@@ -19,9 +19,9 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("heading", { name: "현재 존재하지 않는 것을 만드는 개발자 Maccrey" }),
+      screen.getByRole("heading", { name: "아이디어를 실제 제품으로 완성하는 개발자, Maccrey" }),
     ).toBeInTheDocument();
-    const cta = screen.getByRole("link", { name: "대표 프로젝트 보기" });
+    const cta = screen.getByRole("link", { name: "만든 제품 살펴보기 →" });
     expect(cta).toHaveAttribute("href", "/projects");
   });
 

@@ -6,6 +6,12 @@ export interface BlogPost {
   imageUrl?: string;
 }
 
+export const TISTORY_CATEGORY = "50 year old flutter developer challenge";
+
+function isTargetCategory(value: string): boolean {
+  return decodeHTMLEntities(value).trim().toLocaleLowerCase() === TISTORY_CATEGORY;
+}
+
 const RSS_URL = "https://code-lab.tistory.com/rss";
 const RSS_FALLBACKS = [
   "https://corsproxy.io/?https://code-lab.tistory.com/rss",
@@ -17,7 +23,7 @@ const RSS_FALLBACKS = [
 export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]> {
   try {
     const xml = await fetchRssText({ revalidateSeconds: 3600, allowFallback: true });
-    return parseRssFeed(xml, { limit, fetchOgImages: true });
+    return parseRssFeed(xml, { limit, fetchOgImages: limit <= 4 });
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     return [];
@@ -27,7 +33,7 @@ export async function getLatestBlogPosts(limit: number = 4): Promise<BlogPost[]>
 export async function getLatestBlogPostsClient(limit: number = 4): Promise<BlogPost[]> {
   try {
     const xml = await fetchRssText({ cache: "no-store", allowFallback: true });
-    return parseRssFeed(xml, { limit, fetchOgImages: true });
+    return parseRssFeed(xml, { limit, fetchOgImages: limit <= 4 });
   } catch (error) {
     console.error("Error fetching blog posts on client:", error);
     return [];
@@ -39,7 +45,10 @@ async function parseRssFeed(xml: string, options: { limit: number; fetchOgImages
   const jsonPosts = tryParseJsonFeed(xml, options.limit);
   if (jsonPosts) return jsonPosts;
 
-  const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+  const items = (xml.match(/<item>[\s\S]*?<\/item>/g) || []).filter((item) => {
+    const categories = [...item.matchAll(/<(?:category|dc:subject)(?:\s[^>]*)?>([\s\S]*?)<\/(?:category|dc:subject)>/gi)];
+    return categories.some(([, category]) => isTargetCategory(category.replace(/^<!\[CDATA\[|\]\]>$/g, "")));
+  }).slice(0, options.limit);
 
   const posts: BlogPost[] = await Promise.all(
     items.slice(0, options.limit).map(async (item) => {
@@ -192,7 +201,13 @@ function tryParseJsonFeed(payload: string, limit: number): BlogPost[] | null {
     const parsed = JSON.parse(payload) as { items?: Array<Record<string, unknown>> };
     if (!parsed.items) return null;
 
-    return parsed.items.slice(0, limit).map((item) => {
+    const items = parsed.items.filter((item) => {
+      const rawCategories = item.categories ?? item.category;
+      const categories = Array.isArray(rawCategories) ? rawCategories : [rawCategories];
+      return categories.some((category) => typeof category === "string" && isTargetCategory(category));
+    }).slice(0, limit);
+
+    return items.map((item) => {
       const title = String(item.title || "No Title");
       const link = String(item.link || "#");
       const dateStr = String(item.pubDate || new Date().toISOString());

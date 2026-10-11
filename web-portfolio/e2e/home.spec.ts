@@ -1,14 +1,14 @@
 import { test, expect } from "@playwright/test";
 import { featuredProjects } from "../src/data/projects";
 
-const heroTitle = "현재 존재하지 않는 것을 만드는 개발자 Maccrey";
+const heroTitle = "아이디어를 실제 제품으로 완성하는 개발자, Maccrey";
 
 test.describe("Maccrey portfolio", () => {
   test("홈 히어로, 대표 프로젝트, 네비게이션이 렌더링된다", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.getByRole("heading", { name: heroTitle })).toBeVisible();
-    await expect(page.getByRole("link", { name: "대표 프로젝트 보기" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "만든 제품 살펴보기 →" })).toBeVisible();
 
     const featuredCards = page.locator("section:has-text('대표 프로젝트') ul > li");
     await expect(featuredCards).toHaveCount(featuredProjects.length);

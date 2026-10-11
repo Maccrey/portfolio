@@ -10,13 +10,16 @@ const siteUrl = "https://portfolio.maccrey.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
-  title: "Maccrey Dev Portfolio",
-  description: "50세에 개발을 시작한 Maccrey의 소셜 임팩트 중심 포트폴리오",
+  title: {
+    default: "Maccrey | Flutter · Web 제품 개발자",
+    template: "%s | Maccrey",
+  },
+  description: "Flutter와 웹 제품을 기획부터 개발, 출시까지 만드는 Maccrey의 포트폴리오. 프로젝트 사례와 개발 과정, 채용 및 협업 문의를 확인하세요.",
   openGraph: {
-    title: "Maccrey Dev Portfolio",
-    description: "사람들의 삶을 더 나은 방향으로 바꾸는 프로젝트와 스킬을 소개합니다.",
+    title: "Maccrey | Flutter · Web 제품 개발자",
+    description: "Flutter와 웹 제품을 기획부터 개발, 출시까지 만드는 Maccrey의 포트폴리오.",
     url: siteUrl,
     siteName: "Maccrey Dev Portfolio",
     locale: "ko_KR",

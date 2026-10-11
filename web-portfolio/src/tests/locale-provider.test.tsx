@@ -11,14 +11,14 @@ function renderUseLocale() {
 describe("LocaleProvider", () => {
   it("updates dictionary when locale changes", () => {
     const { result } = renderUseLocale();
-    expect(result.current.dictionary.hero.title).toContain("현재 존재하지 않는 것");
+    expect(result.current.dictionary.hero.title).toContain("실제 제품으로 완성");
 
     act(() => {
       result.current.setLocale("en");
     });
 
     expect(result.current.dictionary.hero.title).toBe(
-      "Maccrey builds what does not exist yet",
+      "Maccrey turns ideas into products people can use",
     );
   });
 });

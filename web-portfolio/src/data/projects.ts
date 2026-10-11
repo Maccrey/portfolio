@@ -19,7 +19,7 @@ export type Project = {
   slug: string;
   stack: string[];
   timeline: string;
-  status: "live" | "prototype";
+  status: "live" | "prototype" | "in-development";
   links: ProjectLink[];
   translations: Record<Locale, ProjectTranslation>;
 };
@@ -302,7 +302,7 @@ export const projects: Project[] = [
     slug: "braille-dashboard",
     stack: ["Next.js", "Supabase", "TypeScript", "TailwindCSS"],
     timeline: "2022.03 - 2023.01",
-    status: "prototype",
+    status: "in-development",
     links: [
       { label: "GitHub", href: "https://github.com/Maccrey/Task-Manager-Cloudtype" },
     ],
@@ -628,6 +628,40 @@ export const projects: Project[] = [
     },
   },
 ];
+
+const currentBuildProjects: Project[] = [
+  {
+    slug: "maccrey-museum",
+    stack: ["WebGL / 3D", "Multilingual UX", "Digital exhibition"],
+    timeline: "2026",
+    status: "live",
+    links: [{ label: "Live site", href: "https://maccrey.com" }],
+    translations: {
+      ko: { name: "모두의 박물관", summary: "3D 마을을 탐험하며 블록체인, 금융, 성수 등 여러 주제의 디지털 박물관을 만나는 웹 플랫폼.", problem: "현장에 가지 않아도 누구나 흥미로운 주제를 직접 탐험하고 배울 수 있는 경험이 필요했습니다.", audience: "학생, 가족, 새로운 지식을 경험하고 싶은 일반 관람객", contribution: "박물관을 주제별 디지털 공간으로 기획하고, 3D 탐험과 다국어 관람 흐름을 갖춘 공개 웹 플랫폼으로 출시했습니다.", impact: "서로 다른 주제의 전시를 한 공간에 연결해 웹에서 바로 탐험할 수 있는 디지털 박물관 경험을 제공합니다.", highlights: ["3D 마을 탐험과 박물관 진입 경험", "블록체인·금융·성수 등 주제별 박물관", "다국어 관람과 전시 확장 구조"] },
+      en: { name: "Everyone's Museum", summary: "A digital museum platform where visitors explore a 3D village and discover museums on blockchain, finance, and local culture.", problem: "People need an engaging way to explore and learn about subjects without visiting a physical venue.", audience: "Students, families, and curious lifelong learners", contribution: "Planned themed digital exhibitions and launched a public multilingual experience with 3D exploration.", impact: "Connects distinct exhibitions in one place and makes them explorable directly on the web.", highlights: ["3D village exploration", "Themed museums for blockchain, finance, and Seongsu", "Multilingual visits and expandable exhibitions"] },
+      ja: { name: "みんなの博物館", summary: "3Dの村を探索し、ブロックチェーンや金融、地域文化などのデジタル博物館を巡るウェブプラットフォーム。", problem: "現地に行かなくても、誰もが興味あるテーマを探索しながら学べる体験が必要でした。", audience: "学生、家族、新しい知識に関心のある人", contribution: "テーマ別のデジタル展示を企画し、3D探索と多言語に対応した公開サイトを立ち上げました。", impact: "異なるテーマの展示を一つの場所につなぎ、ウェブ上で探索できる体験を提供します。", highlights: ["3Dの村を探索する体験", "ブロックチェーン・金融・地域文化の博物館", "多言語対応と展示の拡張性"] },
+      zh: { name: "大家的博物館", summary: "探索 3D 村莊，走訪區塊鏈、金融與地方文化等主題的數位博物館平台。", problem: "人們需要不受地點限制、能親自探索並學習不同主題的體驗。", audience: "學生、家庭與喜歡探索新知的人", contribution: "規劃主題式數位展覽，推出具備 3D 探索與多語言體驗的公開平台。", impact: "將不同主題展覽連結在同一空間，讓訪客直接透過網頁探索。", highlights: ["3D 村莊探索體驗", "區塊鏈、金融與地方文化主題館", "多語言導覽與可擴充展覽"] },
+    },
+  },
+  {
+    slug: "kinora",
+    stack: ["Flutter", "Firebase", "AI / RAG", "Android · iOS"],
+    timeline: "2026–present",
+    status: "prototype",
+    links: [
+      { label: "출시 알림 등록", href: "https://www.kinora.date/" },
+      { label: "개발 기록 보기", href: "https://code-lab.tistory.com/category/50%20year%20old%20flutter%20developer%20challenge" },
+    ],
+    translations: {
+      ko: { name: "KINORA", summary: "Flutter·Firebase 기반으로 개발 중인 AI 가족 돌봄 서비스. 어르신의 대화와 일상 기록을 가족의 안심으로 연결합니다.", problem: "가족이 떨어져 살 때 매일의 안부와 변화가 잘 보이지 않고, 건강 데이터를 과하게 수집하지 않으면서 필요한 신호를 전달하기 어렵습니다.", audience: "대화형 AI를 사용하는 어르신과 멀리서 안부를 확인하는 가족", contribution: "Flutter·Firebase 기반 앱과 가족 리포트의 제품 흐름을 설계하고, 대화 기억과 개인정보 보호 경계를 함께 구현하고 있습니다.", impact: "기능보다 신뢰를 우선하며, 필요한 생활 변화만 가족에게 전달하는 돌봄 경험을 목표로 개발 중입니다.", highlights: ["어르신용 Flutter 앱과 가족용 경험", "대화 맥락을 잇는 AI 기억 설계", "생활 데이터 최소화와 동의 경계 고민"] },
+      en: { name: "KINORA", summary: "An AI care product in development that connects older adults' daily conversations and wellbeing signals with family reassurance.", problem: "Families living apart can miss daily changes, while care products must avoid collecting more health data than needed.", audience: "Older adults using conversational AI and family members checking in from afar", contribution: "Designing Flutter and Firebase product flows, family reports, conversational memory, and privacy boundaries.", impact: "In development with trust first: sharing only the changes families need to know.", highlights: ["Flutter app and family experience", "Conversational memory design", "Data minimization and consent boundaries"] },
+      ja: { name: "KINORA", summary: "高齢者の日常会話と生活のサインを、家族の安心につなぐAIケアサービスの開発プロジェクト。", problem: "離れて暮らす家族には日々の変化が見えにくく、必要な情報だけを届ける設計が求められます。", audience: "対話型AIを使う高齢者と、遠方から見守る家族", contribution: "Flutter・Firebaseのアプリ体験や家族向けレポート、会話記憶、プライバシー境界を設計・実装中です。", impact: "信頼を優先し、家族に必要な生活の変化だけを伝える体験を目指しています。", highlights: ["高齢者向けFlutterアプリと家族体験", "会話の文脈をつなぐAI記憶", "データ最小化と同意の設計"] },
+      zh: { name: "KINORA", summary: "開發中的 AI 照護服務，將長者日常對話與生活訊號連結為家人的安心。", problem: "分居的家人不易察覺日常變化，而照護服務也必須避免過度蒐集健康資料。", audience: "使用對話式 AI 的長者，以及遠距關心家人的親屬", contribution: "設計 Flutter 與 Firebase 產品流程、家人報告、對話記憶與隱私界線。", impact: "以信任為優先，目標是只向家人傳達必要的生活變化。", highlights: ["長者 Flutter App 與家人端體驗", "延續對話脈絡的 AI 記憶", "資料最小化與同意界線"] },
+    },
+  },
+];
+
+projects.unshift(...currentBuildProjects);
 
 export const featuredProjects = projects;
 

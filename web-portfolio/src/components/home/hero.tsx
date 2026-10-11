@@ -6,30 +6,32 @@ export function Hero() {
   const { dictionary, locale } = useLocale();
 
   return (
-    <section className="glass mb-12 rounded-3xl px-8 py-12 text-[var(--text-primary)] relative overflow-hidden">
+    <section className="relative overflow-hidden rounded-[2rem] border border-[var(--glass-border)] bg-[var(--glass-surface)] px-7 py-12 text-[var(--text-primary)] shadow-[var(--glass-shadow)] md:px-12 md:py-16">
 
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center relative z-10">
         <div className="flex-1 space-y-6">
-          <p className="text-sm uppercase tracking-[0.3em] text-accent-secondary font-bold">
+          <p className="text-xs uppercase tracking-[0.24em] text-accent-secondary font-bold">
             {dictionary.hero.badge}
           </p>
-          <h1 className="text-5xl font-bold leading-tight lg:text-7xl tracking-tight">
+          <h1 className="max-w-4xl text-4xl font-bold leading-[1.15] tracking-tight md:text-6xl lg:text-7xl">
             <span className="text-gradient">{dictionary.hero.title}</span>
           </h1>
-          <p className="text-xl text-[var(--text-secondary)] max-w-lg leading-relaxed">{dictionary.hero.subtitle}</p>
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-8 py-4 text-base font-bold text-[var(--text-inverse)] transition hover:scale-105 hover:shadow-lg hover:shadow-[var(--glass-highlight)]"
-          >
-            {dictionary.hero.cta}
-          </Link>
+          <p className="max-w-2xl text-lg leading-8 text-[var(--text-secondary)] md:text-xl">{dictionary.hero.subtitle}</p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/projects" className="inline-flex items-center gap-2 rounded-full bg-[var(--text-primary)] px-6 py-3.5 text-sm font-bold text-[var(--text-inverse)] transition hover:opacity-85">{dictionary.hero.cta} →</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] px-6 py-3.5 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--glass-highlight)]">채용·개발 의뢰 문의</Link>
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-[var(--glass-border)] pt-5 text-sm text-[var(--text-muted)]">
+            <span>Flutter · Firebase</span><span>Web · AI 제품</span><span>기획 · 개발 · 출시</span>
+          </div>
         </div>
-        <div className="flex flex-1 flex-col gap-4">
-          <p className="text-sm font-semibold text-[var(--text-muted)] uppercase tracking-wider">{dictionary.hero.featuredTitle}</p>
+        <div className="hidden flex-1 flex-col gap-4 lg:flex">
+          <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">{dictionary.hero.featuredTitle}</p>
           <ul className="grid gap-4">
             {featuredProjects.map((project) => {
               const copy = getProjectCopy(project, locale);
+              if (project.slug !== "maccrey-museum" && project.slug !== "kinora" && project.slug !== "loglingo") return null;
               return (
                 <li key={project.slug} className="glass-card rounded-2xl p-5 hover:bg-[var(--glass-surface)] transition-colors">
                   <p className="text-lg font-bold text-[var(--text-primary)] mb-1">{copy.name}</p>

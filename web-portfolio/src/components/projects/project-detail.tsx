@@ -17,6 +17,15 @@ export function ProjectDetail({ project }: { project: Project }) {
         <h1 className="text-4xl font-semibold">{copy.name}</h1>
         <p className="text-[var(--text-secondary)]">{copy.summary}</p>
       </div>
+      {project.slug === "kinora" && (
+        <section className="mb-8 flex flex-col justify-between gap-4 rounded-2xl border border-[var(--accent-primary)]/25 bg-[var(--accent-primary)]/5 p-6 md:flex-row md:items-center" aria-label="KINORA 출시 알림">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-primary)]">KINORA · 출시 준비 중</p>
+            <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">출시 알림을 등록하고 KINORA의 소식을 받아보세요.</p>
+          </div>
+          <a href="https://www.kinora.date/" target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--text-primary)] px-5 py-3 text-sm font-semibold text-[var(--text-inverse)]">출시 알림 등록 ↗</a>
+        </section>
+      )}
       <div className="grid gap-8 md:grid-cols-2">
         <DetailSection label={dictionary.projectDetail.labels.problem} value={copy.problem} />
         <DetailSection label={dictionary.projectDetail.labels.audience} value={copy.audience} />
@@ -54,7 +63,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--glass-surface)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] shadow-sm"
+            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-sm ${project.slug === "kinora" && link.href.includes("kinora.date") ? "bg-[var(--text-primary)] text-[var(--text-inverse)]" : "border border-[var(--glass-border)] bg-[var(--glass-surface)] text-[var(--text-primary)]"}`}
           >
             {link.label}
           </a>

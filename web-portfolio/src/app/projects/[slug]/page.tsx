@@ -21,8 +21,22 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
   const copy = getProjectCopy(project, "ko");
   return {
-    title: `${copy.name} | Maccrey Portfolio`,
+    title: copy.name,
     description: copy.summary,
+    keywords: slug === "kinora"
+      ? ["KINORA", "AI 돌봄", "가족 돌봄 앱", "Flutter", "Firebase", "대화형 AI", "어르신 돌봄"]
+      : [copy.name, "Maccrey 프로젝트", "Flutter 개발", "웹 제품 개발"],
+    alternates: { canonical: `/projects/${slug}` },
+    openGraph: {
+      title: `${copy.name} | Maccrey Portfolio`,
+      description: copy.summary,
+      url: `/projects/${slug}`,
+      siteName: "Maccrey Portfolio",
+      locale: "ko_KR",
+      type: "article",
+    },
+    twitter: { card: "summary", title: `${copy.name} | Maccrey Portfolio`, description: copy.summary },
+    robots: { index: true, follow: true },
   };
 }
 

@@ -15,6 +15,7 @@ export type CopyDictionary = {
     projects: string;
     blog: string;
     skills: string;
+    about: string;
     contact: string;
   };
   sections: {
@@ -34,6 +35,7 @@ export type CopyDictionary = {
     contact: {
       badge: string;
     };
+    about: { badge: string; title: string; description: string };
   };
   contact: {
     description: string;
@@ -50,6 +52,7 @@ export type CopyDictionary = {
     status: {
       live: string;
       prototype: string;
+      inDevelopment: string;
     };
     detailCta: string;
   };
@@ -70,17 +73,18 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
   ko: {
     hero: {
       badge: "Impact Builder",
-      title: "현재 존재하지 않는 것을 만드는 개발자 Maccrey",
-      subtitle: "50세에 개발을 시작해 소셜 임팩트 프로젝트와 실용적인 앱을 만들어왔습니다.",
-      cta: "대표 프로젝트 보기",
+      title: "아이디어를 실제 제품으로 완성하는 개발자, Maccrey",
+      subtitle: "50세에 개발을 시작해 Flutter 앱과 웹 서비스를 직접 기획·개발·출시해왔습니다. 이제는 사용자 문제를 끝까지 해결하는 제품 개발과 팀의 다음 단계를 함께하고 싶습니다.",
+      cta: "만든 제품 살펴보기",
       featuredTitle: "대표 프로젝트",
     },
     nav: {
       home: "Home",
       projects: "Projects",
-      blog: "Blog",
-      skills: "Skills",
-      contact: "Contact",
+      blog: "개발 기록",
+      skills: "기술 역량",
+      about: "소개",
+      contact: "문의",
     },
     sections: {
       projects: "프로젝트",
@@ -99,9 +103,10 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       contact: {
         badge: "Contact",
       },
+      about: { badge: "ABOUT MACCREY", title: "문제를 발견하고 끝까지 제품으로 만드는 개발자", description: "50세에 개발을 시작한 뒤 아이디어를 실제 사용 가능한 서비스로 연결해왔습니다. 기획부터 구현, 출시, 운영 중의 개선까지 직접 경험하며 배운 점을 기록합니다." },
     },
     contact: {
-      description: "메일 또는 GitHub을 통해 언제든 협업을 제안해주세요.",
+      description: "정규직 채용, Flutter·웹 제품 개발 의뢰, 기술 협업을 환영합니다. 문제와 목표를 간단히 알려주시면 함께 범위와 다음 단계를 이야기하겠습니다.",
       email: "이메일 보내기",
       github: "GitHub 살펴보기",
       form: "폼으로 제안하기",
@@ -119,6 +124,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       status: {
         live: "운영 중",
         prototype: "프로토타입",
+        inDevelopment: "개발 중",
       },
       detailCta: "자세히 보기",
     },
@@ -137,9 +143,9 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
   en: {
     hero: {
       badge: "Impact Builder",
-      title: "Maccrey builds what does not exist yet",
-      subtitle: "Started coding at 50 and ships social-impact software with measurable value.",
-      cta: "View signature projects",
+      title: "Maccrey turns ideas into products people can use",
+      subtitle: "I started coding at 50 and have planned, built, and launched Flutter apps and web products. I am ready to help teams solve real user problems.",
+      cta: "Explore selected work",
       featuredTitle: "Featured Projects",
     },
     nav: {
@@ -147,6 +153,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       projects: "Projects",
       blog: "Blog",
       skills: "Skills",
+      about: "About",
       contact: "Contact",
     },
     sections: {
@@ -166,9 +173,10 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       contact: {
         badge: "Contact",
       },
+      about: { badge: "ABOUT MACCREY", title: "A developer who takes problems from idea to product", description: "Since starting to code at 50, I have turned ideas into usable services and learned through planning, implementation, launch, and iteration." },
     },
     contact: {
-      description: "Reach out for HR screens, freelance work, or impact partnerships.",
+      description: "Open to full-time roles, Flutter and web product engagements, and technical partnerships. Share the problem and goal, and we can discuss scope and next steps.",
       email: "Send an email",
       github: "Visit GitHub",
       form: "Submit via form",
@@ -186,6 +194,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       status: {
         live: "Live",
         prototype: "Prototype",
+        inDevelopment: "In development",
       },
       detailCta: "View details",
     },
@@ -214,6 +223,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       projects: "プロジェクト",
       blog: "ブログ",
       skills: "スキル",
+      about: "プロフィール",
       contact: "連絡先",
     },
     sections: {
@@ -233,6 +243,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       contact: {
         badge: "Contact",
       },
+      about: { badge: "ABOUT MACCREY", title: "課題を見つけ、製品として最後まで形にする開発者", description: "50歳で開発を始めて以来、アイデアを実際に使えるサービスへつなげてきました。企画から実装、公開、改善までの経験を記録しています。" },
     },
     contact: {
       description: "メールまたはGitHubでお気軽にご連絡ください。",
@@ -253,6 +264,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       status: {
         live: "運用中",
         prototype: "プロトタイプ",
+        inDevelopment: "開発中",
       },
       detailCta: "詳しく見る",
     },
@@ -281,6 +293,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       projects: "專案",
       blog: "部落格",
       skills: "技能",
+      about: "關於我",
       contact: "聯絡",
     },
     sections: {
@@ -300,6 +313,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       contact: {
         badge: "Contact",
       },
+      about: { badge: "ABOUT MACCREY", title: "從發現問題到完成產品的開發者", description: "50歲開始寫程式以來，我持續將想法轉化為可實際使用的服務，並記錄規劃、開發、上線與改進的經驗。" },
     },
     contact: {
       description: "歡迎透過 Email 或 GitHub 與我合作。",
@@ -320,6 +334,7 @@ export const dictionaries: Record<Locale, CopyDictionary> = {
       status: {
         live: "上線中",
         prototype: "原型",
+        inDevelopment: "開發中",
       },
       detailCta: "查看更多",
     },

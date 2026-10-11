@@ -5,11 +5,8 @@
 name: Deploy Next.js site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # The CI workflow owns automatic deployment after all quality gates pass.
+  # Keep this alternate Pages workflow available for an explicit manual run.
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages

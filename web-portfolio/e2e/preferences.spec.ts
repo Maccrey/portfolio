@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const enHeroTitle = "Maccrey builds what does not exist yet";
+const enHeroTitle = "Maccrey turns ideas into products people can use";
 
 test.describe("환경 설정 UI", () => {
   test("테마 토글이 data-theme 값을 전환한다", async ({ page }) => {

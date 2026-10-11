@@ -14,7 +14,7 @@ export function Footer() {
           © {new Date().getFullYear()} {siteMeta.name}
         </p>
         <p className="text-[var(--text-muted)]">
-          E-Mail : maccrey@naver.com
+          <a className="hover:text-[var(--text-primary)]" href={`mailto:${siteMeta.contact.email}`}>{siteMeta.contact.email}</a>
         </p>
       </div>
     </footer>
