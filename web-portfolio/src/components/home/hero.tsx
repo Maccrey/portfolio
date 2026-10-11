@@ -32,11 +32,19 @@ export function Hero() {
           <ul className="grid gap-4">
             {featuredProjects.map((project) => {
               const copy = getProjectCopy(project, locale);
-              if (project.slug !== "maccrey-museum" && project.slug !== "kinora" && project.slug !== "loglingo") return null;
+              const directUrl = {
+                "maccrey-museum": "https://maccrey.com",
+                kinora: "https://kinora.date",
+                loglingo: "https://www.loglingo.com",
+              }[project.slug];
+              if (!directUrl) return null;
               return (
-                <li key={project.slug} className="glass-card rounded-2xl p-5 hover:bg-[var(--glass-surface)] transition-colors">
-                  <p className="text-lg font-bold text-[var(--text-primary)] mb-1">{copy.name}</p>
-                  <p className="text-sm text-[var(--text-secondary)]">{copy.summary}</p>
+                <li key={project.slug}>
+                  <a href={directUrl} target="_blank" rel="noreferrer" aria-label={`${copy.name}: ${dictionary.projectCard.visitCta}`} className="glass-card block rounded-2xl p-5 hover:bg-[var(--glass-surface)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]">
+                    <p className="text-lg font-bold text-[var(--text-primary)] mb-1">{copy.name}</p>
+                    <p className="text-sm text-[var(--text-secondary)]">{copy.summary}</p>
+                    <span className="mt-3 inline-block text-sm font-semibold text-accent-primary">{dictionary.projectCard.visitCta} ↗</span>
+                  </a>
                 </li>
               );
             })}
