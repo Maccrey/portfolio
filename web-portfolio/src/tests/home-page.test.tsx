@@ -7,6 +7,7 @@ import { describe, expect, it, vi } from "vitest";
 vi.mock("@/providers/locale-provider", () => ({
   useLocale: () => ({
     dictionary: dictionaries.ko,
+    locale: "ko",
   }),
 }));
 

@@ -11,6 +11,11 @@ vi.mock("@/components/home/blog-section", () => ({
   BlogSection: () => <div data-testid="blog-section">Blog Section</div>,
 }));
 
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/",
+  useRouter: () => ({ push: vi.fn() }),
+}));
+
 const originalMatchMedia = window.matchMedia;
 
 describe("Theme & locale interactions", () => {
