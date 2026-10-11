@@ -48,7 +48,7 @@ export default function AboutPage() {
         </div>
         <div className="glass-panel flex flex-col justify-between gap-5 rounded-3xl p-7 md:flex-row md:items-center md:p-9">
           <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-primary)]">{about.inDevelopment}</p><h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">{about.launchTitle}</h3><p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-secondary)]">{about.launchDescription}</p></div>
-          <a href="https://www.kinora.date/" target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--text-primary)] px-6 py-3.5 text-sm font-semibold text-[var(--text-inverse)]">{about.launchCta} ↗</a>
+          <a href="https://www.kinora.date" target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--text-primary)] px-6 py-3.5 text-sm font-semibold text-[var(--text-inverse)]">{about.launchCta} ↗</a>
         </div>
       </section>
 

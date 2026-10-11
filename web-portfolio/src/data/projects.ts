@@ -649,7 +649,7 @@ const currentBuildProjects: Project[] = [
     timeline: "2026–present",
     status: "prototype",
     links: [
-      { label: "출시 알림 등록", href: "https://www.kinora.date/" },
+      { label: "출시 알림 등록", href: "https://www.kinora.date" },
       { label: "개발 기록 보기", href: "https://code-lab.tistory.com/category/50%20year%20old%20flutter%20developer%20challenge" },
     ],
     translations: {

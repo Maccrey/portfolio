@@ -23,7 +23,7 @@ export function ProjectDetail({ project }: { project: Project }) {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-primary)]">{dictionary.projectDetail.kinoraBadge}</p>
             <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">{dictionary.projectDetail.kinoraDescription}</p>
           </div>
-          <a href="https://www.kinora.date/" target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--text-primary)] px-5 py-3 text-sm font-semibold text-[var(--text-inverse)]">{dictionary.projectDetail.kinoraCta} ↗</a>
+          <a href="https://www.kinora.date" target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[var(--text-primary)] px-5 py-3 text-sm font-semibold text-[var(--text-inverse)]">{dictionary.projectDetail.kinoraCta} ↗</a>
         </section>
       )}
       <div className="grid gap-8 md:grid-cols-2">
