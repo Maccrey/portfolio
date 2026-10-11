@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { featuredProjects } from "../src/data/projects";
 
 const heroTitle = "아이디어를 실제 제품으로 완성하는 개발자, Maccrey";
 
@@ -11,7 +10,7 @@ test.describe("Maccrey portfolio", () => {
     await expect(page.getByRole("link", { name: "만든 제품 살펴보기 →" })).toBeVisible();
 
     const featuredCards = page.locator("section:has-text('대표 프로젝트') ul > li");
-    await expect(featuredCards).toHaveCount(featuredProjects.length);
+    await expect(featuredCards).toHaveCount(3);
 
     const nav = page.getByRole("navigation");
     await expect(nav.getByRole("link", { name: "Projects" })).toBeVisible();
